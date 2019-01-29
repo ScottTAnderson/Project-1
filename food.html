@@ -43,13 +43,17 @@
                     <div class="card-body">
                         <h5 class="card-title">Shopping List</h5>
                         <p class="card-text">Here is the list of your shopping items.</p>
-                        <ul class="list-group">
+                        <ul class="list-group mb-4 shopping-list">
                             <li class="list-group-item">Cras justo odio</li>
                             <li class="list-group-item">Dapibus ac facilisis in</li>
                             <li class="list-group-item">Morbi leo risus</li>
                             <li class="list-group-item">Porta ac consectetur ac</li>
                             <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>                        
+                        </ul>
+                        <div>
+                            <input class="btn btn-primary mb-4 select-all-btn" type="submit" value="Select All">
+                            <input class="btn btn-primary mb-4 delete-all-btn" type="submit" value="Delete All">
+                        </div>                        
                     </div>
                 </div>             
             </div>
@@ -57,28 +61,55 @@
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">What are you eating tonight?</h5>
-                        <p class="card-text"> Brainstorming diner ideas has never been easier. Select a protein from the drop down below and a meal option will be provided!</p>
-                        <div class="dropdown mb-4">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Protien Options
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Chicken</a>
-                                <a class="dropdown-item" href="#">Beef</a>
-                                <a class="dropdown-item" href="#">Pork</a>
-                                <a class="dropdown-item" href="#">Turkey</a>
-                                <a class="dropdown-item" href="#">Fish</a>
-                                <a class="dropdown-item" href="#">Vegetarian</a>
+                        <p class="card-text"> Brainstorming diner ideas has never been easier. Use the form below for your desired requirements and click search. A meal option will be provided!</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Select a Protien</label>
+                                <select class="form-control" id="protienForm">
+                                    <option></option>
+                                    <option>Chicken</option>
+                                    <option>Beef</option>
+                                    <option>Pork</option>
+                                    <option>Vegetarian</option>
+                                    <option>Fish</option>
+                                </select>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Estimated Cook Time</label>
+                                <select class="form-control" id="cookTimeForm">
+                                    <option></option>
+                                    <option>15 minutes or Less</option>
+                                    <option>15 to 30 minutes</option>
+                                    <option>30 to 60 minutes</option>
+                                    <option>More than 60 minutes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Dietary Restrictions</label>
+                                <select class="form-control" id="dietForm">
+                                    <option>No Dietary Ristrictions</option>
+                                    <option>Dairy Free</option>
+                                    <option>Eggs Free</option>
+                                    <option>Wheat Free</option>
+                                    <option>Peanut Free</option>
+                                    <option>Shellfish Free</option>
+                                    <option>Soy Free</option>
+                                    <option>Fish Free</option>
+                                    <option>Tree Nuts Free</option>
+                                </select>
+                                <div class="mt-4">
+                                    <button type="button" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </form>                        
                         <div class="card mb-4">
-                            <img src="./assets/images/burrito-chicken-close-up-461198.jpg" class="card-img-top" alt="">
+                            <img src="./assets/images/burrito-chicken-close-up-461198.jpg" class="card-img-top food-image" alt="">
                             <div class="card-body">
-                                <p class="card-text">Not sure what we want to put here but maybe this where we dump the recipe.</p>
+                                <p class="card-text recipe-text">Not sure what we want to put here but maybe this where we dump the recipe.</p>
                             </div>
                         </div>
                         <div>
-                            <input class="btn btn-primary mb-4" type="submit" value="Add to Shopping List">
+                            <input class="btn btn-primary mb-4 shopping-btn" type="submit" value="Add to Shopping List">
                         </div>
                         <a href="wine.html" class="card-link">Wine Selector</a>
                         <a href="food.html" class="card-link">Food Selector</a>
