@@ -42,22 +42,45 @@
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Shopping List</h5>
-                        <p class="card-text">Here is the list of your shopping items.</p>
-                        <ul class="list-group">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>                        
+                        <p class="card-text">Enter any items for your shopping list.</p>
+                        <div class="form-group">
+                            <textarea class="form-control" id="shoppingList" rows="10"></textarea>
+                        </div>
+                        <div>
+                            <input class="btn btn-primary mb-4 save-btn" type="submit" value="Save">
+                        </div>                        
                     </div>
                 </div>             
             </div>
-            <div class="col">
+            <div class="col mb-4">
                     <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Getting Started</h5>
-                        <p class="card-text">Click on the below options to start building your date night! Grocery items will be added to your list after you make your selections.</p>
+                        <h5 class="card-title">Let's find you a drink!</h5>
+                        <p class="card-text">Use the form below to generate drink ideas for your data night!</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Wine Choices</label>
+                                <select class="custom-select" multiple id="wineForm">
+                                    <option>No Drink</option>
+                                    <option>Red</option>
+                                    <option>White</option>
+                                    <option>Rose</option>
+                                    <option>Champagne</option>
+                                </select>
+                                <div class="mt-4">
+                                    <button type="button" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </form>                        
+                        <div class="card mb-4">
+                            <img src="./assets/images/wine.jpeg" class="card-img-top wine-image" alt="">
+                            <div class="card-body">
+                                <p class="card-text wine-text">wine + food combo example text</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <input class="btn btn-primary shopping-btn" type="submit" value="Add to Shopping List">
+                        </div>
                         <a href="wine.html" class="card-link">Wine Selector</a>
                         <a href="food.html" class="card-link">Food Selector</a>
                         <a href="movie.html" class="card-link">Movie Selector</a>
@@ -68,7 +91,7 @@
     </div>
 
     <!--footer-->
-    <footer class="card mt-auto py-3 text-center fixed-bottom">
+    <footer class="card mt-auto text-center fixed-bottom">
         <div class="container">
             <span class="text-muted">© 2019 Copyright</span>
         </div>
