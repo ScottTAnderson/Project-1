@@ -1,5 +1,7 @@
 var recipeURL = '';
 
+
+//Get random movie
 function getRandomMovie() {
     var apiKey = '5eac88493bbb29ff93bb4bedf09e7f4e';
     var randomMovie = Math.floor(Math.random() * 20 + 1);
@@ -31,28 +33,29 @@ function getRandomMovie() {
         method: 'GET',
         // headers: {},
         // data: '{}'
-    }).then(function (response) {
+    }).then(function (movie) {
         //a single random movie json object
-        console.log(response.results[randomMovie]);
+        console.log(movie.results[randomMovie]);
         //Title
-        console.log(response.results[randomMovie].title);
+        console.log(movie.results[randomMovie].title);
         //Plot
-        console.log(response.results[randomMovie].overview);
+        console.log(movie.results[randomMovie].overview);
         //Release Date in yyyy-mm-dd format
-        console.log(response.results[randomMovie].release_date);
+        console.log(movie.results[randomMovie].release_date);
         //Poster path. w500 defines a width of 500px
-        console.log('https://image.tmdb.org/t/p/w500' + response.results[randomMovie].poster_path);
+        console.log('https://image.tmdb.org/t/p/w500' + movie.results[randomMovie].poster_path);
     })
 }
 
+//Get recipe
 function getRecipe() {
     var randomRecipe = Math.floor(Math.random() * 100 + 1);
     var appID = 'c7db65d2';
     var appKey = 'eabbd467ce4d304a551a72e85f1f0ef1';
-    var recipeID = 'chicken'; //placeholder protein
+    var recipeIngredient = 'chicken'; //placeholder protein
     //var recipeID = $('.userProtein').val(); //use the input value for protein in HTML
     var queryURL = 'https://api.edamam.com/search?q=' +
-        recipeID +
+        recipeIngredient +
         '&from=0&to=100&app_id=' +
         appID +
         '&app_key=' +
@@ -61,27 +64,64 @@ function getRecipe() {
     $.ajax({
         url: queryURL,
         method: 'GET',
-    }).then(function (answer) {
+    }).then(function (recipe) {
         //a single random recipe json object
-        console.log(answer.hits[randomRecipe].recipe);
+        console.log(recipe.hits[randomRecipe].recipe);
         //Name of Dish
-        console.log(answer.hits[randomRecipe].recipe.label);
+        console.log(recipe.hits[randomRecipe].recipe.label);
         //Image path
-        console.log(answer.hits[randomRecipe].recipe.image);
+        console.log(recipe.hits[randomRecipe].recipe.image);
         //Calories. May not end up using
-        console.log(answer.hits[randomRecipe].recipe.calories);
+        console.log(recipe.hits[randomRecipe].recipe.calories);
         //Ingredients. It is an array of strings
-        console.log(answer.hits[randomRecipe].recipe.ingredientLines);
+        console.log(recipe.hits[randomRecipe].recipe.ingredientLines);
         //Link to full recipe website with prep instructions
-        console.log(answer.hits[randomRecipe].recipe.url);
+        console.log(recipe.hits[randomRecipe].recipe.url);
 
     })
 }
 
+//Get cocktail
+function getCoctail() {
+    var apiKey = '1';
+    var ingredient = '';
+    //var ingredient = $(.ingredient).val(); //use the input value for ingredient in HTML
+    var queryURL = 'https://www.thecocktaildb.com/api/json/v1/' + apiKey + '/filter.php?i=' + ingredient;
+
+    $.ajax({
+        url: queryURL,
+        method: 'GET',
+    }).then(function(drink) {
+        var randomDrink = Math.floor(Math.random()* drink.drinks.length + 1);
+        console.log(drink.drinks[randomDrink].idDrink);
+        console.log(drink);
+        console.log(randomDrink);
+        drinkID = drink.drinks[randomDrink].idDrink;
+        queryURL = 'https://www.thecocktaildb.com/api/json/v1/' + apiKey + '/lookup.php?i=' + drinkID
+        $.ajax({
+            url: queryURL,
+            method: 'GET',
+        }).then(function(drinkDetails){
+            console.log(drinkDetails.drinks[0]);
+            //drink name
+            console.log(drinkDetails.drinks[0].strDrink)
+            //ingredients -- need to iterate over 1-15, checking to see if an ingredient exists
+            console.log(drinkDetails.drinks[0].strIngredient1)
+            //ingredint measurements -- need to iterate over 1-15, checking to see if a measurement exists
+            console.log(drinkDetails.drinks[0].strIngredient1)
+            //directions for making
+            console.log(drinkDetails.drinks[0].strInstructions)
+            //image url for drink
+            console.log(drinkDetails.drinks[0].strDrinkThumb)
+        });
+    });
+};
+
 
 $(document).ready(function () {
-    getRandomMovie();
-    getRecipe();
+    // getRandomMovie();
+    // getRecipe();
+    getCoctail();
 
 });
 //Food2Fork API key = 01ec3a6106be7bd086339dcba3f5c9af max usage 50
