@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     var q = [];
-    
+
     function getRecipe() {
         var randomRecipe = Math.floor(Math.random() * 100 + 1);
         var appID = 'c7db65d2';

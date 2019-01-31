@@ -59,18 +59,39 @@
                         <p class="card-text"> Brainstorming diner ideas has never been easier. Use the form below for your desired requirements and click search. A meal option will be provided!</p>
                         <form>
                             <div class="form-group font-weight-bold">
+                                <label for="exampleFormControlSelect1">Select a Protein</label>
+                                <select class="custom-select" multiple id="proteinForm">
+                                    <option value="chicken">Chicken</option>
+                                    <option value="beef">Beef</option>
+                                    <option value="pork">Pork</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="fish">Fish</option>
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
                                 <label for="exampleFormControlSelect1">Select an Estimated Cook Time</label>
                                 <select class="custom-select" multiple id="cookTimeForm">
+                                    <option value="0-15">15 minutes or Less</option>
+                                    <option value="15-30">15 to 30 minutes</option>
+                                    <option value="30-60">30 to 60 minutes</option>
+                                    <option value="60%2B">More than 60 minutes</option>
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
                                 <label for="exampleFormControlSelect1">Select a Dietary Restriction</label>
                                 <select class="custom-select" multiple id="dietForm">
+                                    <option value="none">No Dietary Restrictions</option>
+                                    <option value="dairy-free">Dairy Free</option>
+                                    <option value="egg-free">Eggs Free</option>
+                                    <option value="gluten-free">Gluten Free</option>
+                                    <option value="peanut-free">Peanut Free</option>
+                                    <option value="shellfish-free">Shellfish Free</option>
+                                    <option value="soy-free">Soy Free</option>
+                                    <option value="fish-free">Fish Free</option>
+                                    <option value="tree-nut-free">Tree Nuts Free</option>
                                 </select>
                                 <div class="mt-4">
+                                    <button type="button" class="btn btn-primary" id="search">Search</button>
                                 </div>
                             </div>
                         </form>                        
@@ -104,5 +125,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/javascript/food.js"></script>
+
 </body>
 </html>
