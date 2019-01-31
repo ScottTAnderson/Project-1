@@ -56,19 +56,16 @@ $(document).ready(function() {
     $('#proteinForm').on('click', function(){
         protein = $('#proteinForm option:selected').val().trim();
         console.log(protein);
-        // queryParam += protein;
     });
 
     $('#dietForm').on('click', function(){
         diet = '&diet=' + $('#dietForm option:selected').val().trim();
         console.log(diet);
-        // queryParam += ('&diet=' + diet);
     });
 
     $('#allergyForm').on('click', function(){
         allergy = '&health=' + $('#allergyForm option:selected').val().trim();
         console.log(allergy);
-        // queryParam += ('&health=' + allergy);
     });
 
     $('#search').on('click', function() {
