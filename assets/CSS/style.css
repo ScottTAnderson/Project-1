@@ -1,3 +1,26 @@
+.jumbotron {
+    background-image: url(mountain.jpg);
+    background-size: 50%;
+    color: #FF530D;
+    -webkit-text-stroke: 1px lightgrey;
+    text-shadow: 2px 4px 6px white;
+}
 body {
-    background-color: #90CCFD;
+    background-color: #ececec;
+}
+.btn {
+    background-color: #F78888;
+    border-color: #F78888;
+    color: black;
+    font-weight: bold;
+}
+
+.nav-item {
+    color: black;
+    font-weight: 600;
+}
+
+.navbar-brand {
+    color: black;
+    font-weight: 800;
 }
