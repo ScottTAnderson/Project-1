@@ -1,6 +1,11 @@
 $(document).ready(function() {
 
-    var q = [];
+    var queryParam = '';
+    var foodName;
+    var foodImage;
+    var foodCalories;
+    var foodIngredients = [];
+    var foodPrepSite;
 
     function getRecipe() {
         var randomRecipe = Math.floor(Math.random() * 100 + 1);
@@ -9,54 +14,73 @@ $(document).ready(function() {
         
         //var recipeID = $('.userProtein').val(); //use the input value for protein in HTML
         var queryURL = 'https://api.edamam.com/search?q=' +
-            q +
+            queryParam +
             '&from=0&to=100&app_id=' +
             appID +
             '&app_key=' +
             appKey;
     
-        $.ajax({
-            url: queryURL,
-            method: 'GET',
-        }).then(function (answer) {
-            //a single random recipe json object
-            console.log(answer.hits[randomRecipe].recipe);
-            //Name of Dish
-            console.log(answer.hits[randomRecipe].recipe.label);
-            //Image path
-            console.log(answer.hits[randomRecipe].recipe.image);
-            //Calories. May not end up using
-            console.log(answer.hits[randomRecipe].recipe.calories);
-            //Ingredients. It is an array of strings
-            console.log(answer.hits[randomRecipe].recipe.ingredientLines);
-            //Link to full recipe website with prep instructions
-            console.log(answer.hits[randomRecipe].recipe.url);
-    
-        })
+    $.ajax({
+        url: queryURL,
+        method: 'GET',
+    }).then(function (answer) {
+        console.log(queryURL);
+        //a single random recipe json object
+        console.log(answer.hits[randomRecipe].recipe);
+        //Name of Dish
+        foodName = answer.hits[randomRecipe].recipe.label;
+        $('.recipe-text').text(foodName);
+        //Image path
+        foodImage = answer.hits[randomRecipe].recipe.image;
+        console.log(foodImage);
+        $('.food-image').attr('src', foodImage);
+        //Calories. May not end up using
+        foodCalories = answer.hits[randomRecipe].recipe.calories;
+        $('.recipe-text').append('<br>Calories: ' + foodCalories.toFixed(2));
+        //Ingredients. It is an array of strings
+        foodIngredients = answer.hits[randomRecipe].recipe.ingredientLines;
+        for (i = 0; i < foodIngredients.lenth; i++) {
+            $('.recipe-text').append(foodIngredients[i]);
+        }
+        //Link to full recipe website with prep instructions
+        foodPrepSite = answer.hits[randomRecipe].recipe.url;
+        $('.recipe-link').attr('href', foodPrepSite);
+        $('.recipe-link').text(foodPrepSite);
+    })
     }
 
-$('#proteinForm').on('click', function() {
-    var protein = $('#proteinForm option:selected').val().trim();
-    console.log(protein);
-    q.push(protein);
-    getRecipe();
+    var protein = '';
+    var diet = '';
+    var allergy = '';
+
+    $('#proteinForm').on('click', function(){
+        protein = $('#proteinForm option:selected').val().trim();
+        console.log(protein);
+        // queryParam += protein;
+    });
+
+    $('#dietForm').on('click', function(){
+        diet = '&diet=' + $('#dietForm option:selected').val().trim();
+        console.log(diet);
+        // queryParam += ('&diet=' + diet);
+    });
+
+    $('#allergyForm').on('click', function(){
+        allergy = '&health=' + $('#allergyForm option:selected').val().trim();
+        console.log(allergy);
+        // queryParam += ('&health=' + allergy);
+    });
+
+    $('#search').on('click', function() {
+        if (protein === '') {
+            $('.protein').css('color', 'red');
+            $('.protein').append(' (Required) ');
+        } else {
+            queryParam = protein += diet += allergy;
+            getRecipe();
+            $('.protein').css('color', 'black');
+            $('.protein').text('Select a Protein');
+        }
+    });
+
 });
-
-$('#cookTimeForm').on('click', function() {
-    var timeRange = $('#cookTimeForm option:selected').val().trim();
-    console.log(timeRange);
-});
-
-$('#dietForm').on('click', function() {
-    var diet = $('#dietForm option:selected').val().trim();
-    console.log(diet);
-});
-  
-$('#search').on('click', function() {
-    alert('Searching!');
-});
-
-
-
-});
-

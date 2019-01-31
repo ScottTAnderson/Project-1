@@ -59,7 +59,7 @@
                         <p class="card-text"> Brainstorming diner ideas has never been easier. Use the form below for your desired requirements and click search. A meal option will be provided!</p>
                         <form>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1">Select a Protein</label>
+                                <label for="exampleFormControlSelect1" class="protein">Select a Protein</label>
                                 <select class="custom-select" multiple id="proteinForm">
                                     <option value="chicken">Chicken</option>
                                     <option value="beef">Beef</option>
@@ -69,18 +69,19 @@
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1">Select an Estimated Cook Time</label>
-                                <select class="custom-select" multiple id="cookTimeForm">
-                                    <option value="0-15">15 minutes or Less</option>
-                                    <option value="15-30">15 to 30 minutes</option>
-                                    <option value="30-60">30 to 60 minutes</option>
-                                    <option value="60%2B">More than 60 minutes</option>
+                                <label for="exampleFormControlSelect1">Select a Diet (optional)</label>
+                                <select class="custom-select" multiple id="dietForm">
+                                    <option value="balanced">Balanced</option>
+                                    <option value="high-protein">High Protien</option>
+                                    <option value="high-fiber">High Fiber</option>
+                                    <option value="low-fat">Low Fat</option>
+                                    <option value="low-carb">Low Carb</option>
+                                    <option value="low-sodium">Low Sodium</option>
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1">Select a Dietary Restriction</label>
-                                <select class="custom-select" multiple id="dietForm">
-                                    <option value="none">No Dietary Restrictions</option>
+                                <label for="exampleFormControlSelect1">Select an Allergy (optional)</label>
+                                <select class="custom-select" multiple id="allergyForm">
                                     <option value="dairy-free">Dairy Free</option>
                                     <option value="egg-free">Eggs Free</option>
                                     <option value="gluten-free">Gluten Free</option>
@@ -98,8 +99,8 @@
                         <div class="card mb-4">
                             <img src="./assets/images/burrito-chicken-close-up-461198.jpg" class="card-img-top food-image" alt="">
                             <div class="card-body">
-                                <p class="card-text recipe-text">Recipe text goes here</p>
-                                <p class="card-text recipe-link">Recipe link goes here</p>
+                                <p class="card-text recipe-text"></p>
+                                <a class="card-text recipe-link"></a>
                             </div>
                         </div>
                         <div class="mb-4">
