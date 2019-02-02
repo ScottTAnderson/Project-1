@@ -28,19 +28,13 @@ $(document).ready(function () {
                 for (var i = 1; i < 16; i++) {
                     var ingredientNumber = 'strIngredient' + i;
                     var isIngredient = drinkDetails.drinks[0][ingredientNumber];
-                    if (isIngredient.length > 2) {
-                        $('.drink-ingredients').append(isIngredient + '<br>');
-                    };
-                };
-
-                //Display list of measurments
-                for (var i = 1; i < 16; i++) {
                     var measureNumber = 'strMeasure' + i;
                     var isMeasurement = drinkDetails.drinks[0][measureNumber]
-                    if (isMeasurement.length > 2) {
-                        $('.drink-measurements').append(isMeasurement + '<br>');
+                    if (isIngredient.length > 2) {
+                        $('.drink-ingredients').append(isMeasurement + ' ' +isIngredient + '<br>');
                     };
                 };
+                
 
                 //Display drink name
                 drinkName = drinkDetails.drinks[0].strDrink;
