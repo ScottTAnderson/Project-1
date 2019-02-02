@@ -1,4 +1,8 @@
-var GenresArray = ["Action", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir", "History", "Horror", "Music", "Musical", "Mystery", "Romance", "Sci-Fi", "Short", "Sport", "Superhero", "Thriller", "War", "Western"];
+// TEST!!!
+
+
+var genresArray = [];
+var decadesArray = [];
 
 var genresObjectArray = [
     {
@@ -79,7 +83,7 @@ var genresObjectArray = [
     }
 ];
 
-var decadesArray = [
+var decadesObj = [
     {
         "id": "2010s",
         "start": 2010,
@@ -140,18 +144,18 @@ $(document).ready(function () {
 
     //Necessary JS for the checkboxes to work
     $(function () {
-        $('.list-group.checked-list-box .list-group-item').each(function () {
+        $('.genres .list-group-item').each(function () {
 
             // Settings
-
+//github
             //This sets up the whole checkbox selection
             var $widget = $(this)
             //Here a variable is created for the DOM checkbox object
-            var $checkbox = $('<input type="checkbox" class="hidden" />')
+            var $checkbox = $('<input type="checkbox" class="hidden" />');
                 //Set a color for the whole checkbox selection
-            var color = ($widget.data('color') ? $widget.data('color') : "primary")
-            var style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
-                settings = {
+            var color = ($widget.data('color') ? $widget.data('color') : "primary");
+            var style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-");
+              var settings = {
                     on: {
                         icon: 'glyphicon glyphicon-check'
                     },
@@ -167,8 +171,26 @@ $(document).ready(function () {
 
             // Event Handlers
             $widget.on('click', function () {
+
+                //this should check if the clicked box is checked, and subsequently removed the array item by its index
+                if ($checkbox.is(':checked')) {
+                    
+                    // var i = genresArray.index[$widget.attr('value')]
+                    // genresArray.splice('index', i);
+                    genresArray = genresArray.filter(function(value, index, arr) {
+                        return value !== $widget.attr('value')
+                    });
+                    console.log(genresArray);
+                } else {
+                    genresArray.push($widget.attr('value'));
+                    console.log(genresArray);
+                }
+
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
+
+                genresArray.push($widget.attr('value'));
+                console.log(genresArray);
                 updateDisplay();
             });
             $checkbox.on('change', function () {
@@ -213,16 +235,111 @@ $(document).ready(function () {
             init();
         });
 
-        $('#get-checked-data').on('click', function (event) {
-            event.preventDefault();
-            var checkedItems = {}, counter = 0;
-            $("#check-list-box li.active").each(function (idx, li) {
-                checkedItems[counter] = $(li).text();
-                console.log(checkedItems[counter]);
-                counter++;
+//
+//
+//
+        //Isolating the logic for the decades array
+        $('.decades .list-group-item').each(function () {
+
+            // Settings
+
+            //This sets up the whole checkbox selection
+            var $widget = $(this)
+            //Here a variable is created for the DOM checkbox object
+            var $checkbox = $('<input type="checkbox" class="hidden" />');
+                //Set a color for the whole checkbox selection
+            var color = ($widget.data('color') ? $widget.data('color') : "primary");
+            var style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-");
+              var settings = {
+                    on: {
+                        icon: 'glyphicon glyphicon-check'
+                    },
+                    off: {
+                        icon: 'glyphicon glyphicon-unchecked'
+                    }
+                };
+
+            $widget.css('cursor', 'pointer')
+            $widget.prepend(" ");
+            $widget.prepend($checkbox);
+
+
+            // Event Handlers
+            $widget.on('click', function () {
+                
+                if ($checkbox.is(':checked')) {
+                  
+                    // var i = genresArray.index[$widget.attr('value')]
+                    // genresArray.splice('index', i);
+                    decadesArray = decadesArray.filter(function(value, index, arr) {
+                        return value !== $widget.attr('value')
+                    });
+                    console.log(decadesArray);
+                } else {
+                    decadesArray.push($widget.attr('value'));
+                    console.log(decadesArray);
+                }
+
+                
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+                $checkbox.triggerHandler('change');
+                
+                // decadesArray.push($widget.attr('value'));
+                // console.log(decadesArray);
+                updateDisplay();
             });
-            $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+            $checkbox.on('change', function () {
+                updateDisplay();
+            });
+
+
+            // Actions
+            function updateDisplay() {
+                var isChecked = $checkbox.is(':checked');
+
+                // Set the button's state
+                $widget.data('state', (isChecked) ? "on" : "off");
+
+                // Set the button's icon
+                $widget.find('.state-icon')
+                    .removeClass()
+                    .addClass('state-icon ' + settings[$widget.data('state')].icon);
+
+                // Update the button's color
+                if (isChecked) {
+                    $widget.addClass(style + color + ' active');
+                } else {
+                    $widget.removeClass(style + color + ' active');
+                }
+            }
+
+            // Initialization
+            function init() {
+
+                if ($widget.data('checked') == true) {
+                    $checkbox.prop('checked', !$checkbox.is(':checked'));
+                }
+
+                updateDisplay();
+
+                // Inject the icon if applicable
+                if ($widget.find('.state-icon').length == 0) {
+                    $widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
+                }
+            }
+            init();
         });
+
+        // $('#get-checked-data').on('click', function (event) {
+        //     event.preventDefault();
+        //     var checkedItems = {}, counter = 0;
+        //     $("#check-list-box li.active").each(function (idx, li) {
+        //         checkedItems[counter] = $(li).text();
+        //         console.log(checkedItems[counter]);
+        //         counter++;
+        //     });
+        //     $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+        // });
     });
 
 
@@ -236,7 +353,6 @@ $(document).ready(function () {
     });
 
     function getRandomMovie() {
-        debugger;
 
         //Get a random movie - comment this out.
         // var apiKey = '5eac88493bbb29ff93bb4bedf09e7f4e';
@@ -251,9 +367,9 @@ $(document).ready(function () {
         //This findMovie variable needs to go if you want to be querying using genres and years
         var findMovie = Math.floor(Math.random() * 20 + 1);
         var findPage = Math.floor(Math.random() * 20 + 1);
-        var startDate = 1980;
-        var endDate = 1990;
-        var genresArray = [28, 12, 16, 35, 80, 99, 18, 10751, 14, 36, 27, 10402, 9648, 10749, 878, 10770, 53, 10752, 37];
+        var decadesArraySort = decadesArray.sort();
+        var startDate = decadesArraySort[0] + '-1-1';
+        var endDate = decadesArraySort[decadesArray.length - 1] + '-12-31';
         var findGenres = genresArray.join('|');
 
         //Now to actually use the criteria checked in order to call a movie with the right genre and decade
@@ -268,11 +384,9 @@ $(document).ready(function () {
             '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' +
             findPage +
             '&primary_release_date.gte=' +
-            startDate + //placeholder start date
-            //$('.startYear').val() +  //use the input value for start year in HTML
+            startDate +
             '&primary_release_date.lte=' +
-            endDate + //placeholder end date
-            //$('.endYear').val(); //use the input value for end year in HTML
+            endDate + 
             '&with_genres=' +
             findGenres; //The array needs to be updated based on genre boxes selected
         console.log(queryURL);
@@ -311,7 +425,7 @@ $(document).ready(function () {
             $("#MovieYear").text("Release Date: " + YourMovie.release_date)
 
             $("#MoviePoster").empty();
-            $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + response.results[randomMovie].poster_path)
+            $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + response.results[findMovie].poster_path)
         })
     }
 
