@@ -317,7 +317,6 @@ $(document).ready(function () {
 
 
     $("#SubmitButton").on("click", function () {
-        debugger;
         getRandomMovie();
 
     });
@@ -338,9 +337,6 @@ $(document).ready(function () {
         //This findMovie variable needs to go if you want to be querying using genres and years
         var findMovie = Math.floor(Math.random() * 20 + 1);
         var findPage = Math.floor(Math.random() * 20 + 1);
-        var startDate = 1980;
-        var endDate = 1990;
-        var genresArray = [28, 12, 16, 35, 80, 99, 18, 10751, 14, 36, 27, 10402, 9648, 10749, 878, 10770, 53, 10752, 37];
         var findGenres = genresArray.join('|');
 
         //Now to actually use the criteria checked in order to call a movie with the right genre and decade
@@ -355,11 +351,7 @@ $(document).ready(function () {
             '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' +
             findPage +
             '&primary_release_date.gte=' +
-            startDate + //placeholder start date
-            //$('.startYear').val() +  //use the input value for start year in HTML
             '&primary_release_date.lte=' +
-            endDate + //placeholder end date
-            //$('.endYear').val(); //use the input value for end year in HTML
             '&with_genres=' +
             findGenres; //The array needs to be updated based on genre boxes selected
         console.log(queryURL);
