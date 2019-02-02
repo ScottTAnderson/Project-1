@@ -2,6 +2,7 @@
 
 
 var genresArray = [];
+var decadesArray = [];
 
 var genresObjectArray = [
     {
@@ -172,6 +173,7 @@ $(document).ready(function () {
             $widget.on('click', function () {
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
+
                 genresArray.push($widget.attr('value'));
                 console.log(genresArray);
                 updateDisplay();
@@ -218,16 +220,96 @@ $(document).ready(function () {
             init();
         });
 
-        $('#get-checked-data').on('click', function (event) {
-            event.preventDefault();
-            var checkedItems = {}, counter = 0;
-            $("#check-list-box li.active").each(function (idx, li) {
-                checkedItems[counter] = $(li).text();
-                console.log(checkedItems[counter]);
-                counter++;
+//
+//
+//
+        //Isolating the logic for the decades array
+        $('decades .list-group-item').each(function () {
+
+            // Settings
+
+            //This sets up the whole checkbox selection
+            var $widget = $(this)
+            //Here a variable is created for the DOM checkbox object
+            var $checkbox = $('<input type="checkbox" class="hidden" />');
+                //Set a color for the whole checkbox selection
+            var color = ($widget.data('color') ? $widget.data('color') : "primary");
+            var style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-");
+              var settings = {
+                    on: {
+                        icon: 'glyphicon glyphicon-check'
+                    },
+                    off: {
+                        icon: 'glyphicon glyphicon-unchecked'
+                    }
+                };
+
+            $widget.css('cursor', 'pointer')
+            $widget.prepend(" ");
+            $widget.prepend($checkbox);
+
+
+            // Event Handlers
+            $widget.on('click', function () {
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+                $checkbox.triggerHandler('change');
+                
+                genresArray.push($widget.attr('value'));
+                console.log(decadesArray);
+                updateDisplay();
             });
-            $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+            $checkbox.on('change', function () {
+                updateDisplay();
+            });
+
+
+            // Actions
+            function updateDisplay() {
+                var isChecked = $checkbox.is(':checked');
+
+                // Set the button's state
+                $widget.data('state', (isChecked) ? "on" : "off");
+
+                // Set the button's icon
+                $widget.find('.state-icon')
+                    .removeClass()
+                    .addClass('state-icon ' + settings[$widget.data('state')].icon);
+
+                // Update the button's color
+                if (isChecked) {
+                    $widget.addClass(style + color + ' active');
+                } else {
+                    $widget.removeClass(style + color + ' active');
+                }
+            }
+
+            // Initialization
+            function init() {
+
+                if ($widget.data('checked') == true) {
+                    $checkbox.prop('checked', !$checkbox.is(':checked'));
+                }
+
+                updateDisplay();
+
+                // Inject the icon if applicable
+                if ($widget.find('.state-icon').length == 0) {
+                    $widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
+                }
+            }
+            init();
         });
+
+        // $('#get-checked-data').on('click', function (event) {
+        //     event.preventDefault();
+        //     var checkedItems = {}, counter = 0;
+        //     $("#check-list-box li.active").each(function (idx, li) {
+        //         checkedItems[counter] = $(li).text();
+        //         console.log(checkedItems[counter]);
+        //         counter++;
+        //     });
+        //     $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+        // });
     });
 
 
@@ -316,7 +398,7 @@ $(document).ready(function () {
             $("#MovieYear").text("Release Date: " + YourMovie.release_date)
 
             $("#MoviePoster").empty();
-            $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + response.results[randomMovie].poster_path)
+            $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + response.results[findMovie].poster_path)
         })
     }
 
