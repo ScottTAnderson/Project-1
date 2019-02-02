@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Date Night! | Food</title>
     <!--Bootstrap CSS Link-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
     <!--External CSS link-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+
 <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Login</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -38,25 +42,13 @@
     <!--Main Card-->
     <div class="container">
         <div class="row">
-            <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Shopping List</h5>
-                        <p class="card-text">Enter any items for your shopping list.</p>
-                        <div class="form-group">
-                            <textarea class="form-control" id="shoppingList" rows="10"></textarea>
-                        </div>
-                        <div>
-                            <input class="btn btn-primary mb-4 save-btn" type="submit" value="Save">
-                        </div>                        
-                    </div>
-                </div>             
-            </div>
+
             <div class="col mb-4">
-                    <div class="card">
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">What are you eating tonight?</h5>
-                        <p class="card-text"> Brainstorming diner ideas has never been easier. Use the form below for your desired requirements and click search. A meal option will be provided!</p>
+                        <p class="card-text"> Brainstorming diner ideas has never been easier. Use the form below for
+                            your desired requirements and click search. A meal option will be provided!</p>
                         <form>
                             <div class="form-group font-weight-bold">
                                 <label for="exampleFormControlSelect1" class="protein">Select a Protein</label>
@@ -95,25 +87,44 @@
                                     <button type="button" class="btn btn-primary" id="search">Search</button>
                                 </div>
                             </div>
-                        </form>                        
-                        <div class="card mb-4">
-                            <img src="./assets/images/burrito-chicken-close-up-461198.jpg" class="card-img-top food-image" alt="">
-                            <div class="card-body">
-                                <p class="card-text recipe-text"></p>
-                                <a class="card-text recipe-link"></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card mb-4">
+                    <img src="./assets/images/stockfoodimage.jpg" class="card-img-top food-image" alt="">
+                    <div class="card-body">
+                        <p class="card-text recipe-text"></p>
+                        <a class="card-text recipe-link"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="mb-4">
+                    <input class="btn btn-primary shopping-btn" type="submit" value="Add to Shopping List">
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Shopping List</h5>
+                            <p class="card-text">Enter any items for your shopping list.</p>
+                            <div class="form-group">
+                                <textarea class="form-control" id="shoppingList" rows="10"></textarea>
+                            </div>
+                            <div>
+                                <input class="btn btn-primary mb-4 save-btn" type="submit" value="Save">
                             </div>
                         </div>
-                        <div class="mb-4">
-                            <input class="btn btn-primary shopping-btn" type="submit" value="Add to Shopping List">
-                        </div>
-                        <a href="wine.html" class="card-link">Wine Selector</a>
-                        <a href="food.html" class="card-link">Food Selector</a>
-                        <a href="movie.html" class="card-link">Movie Selector</a>
                     </div>
-                </div>             
+                </div>
+                <a href="wine.html" class="card-link">Wine Selector</a>
+                <a href="food.html" class="card-link">Food Selector</a>
+                <a href="movie.html" class="card-link">Movie Selector</a>
             </div>
         </div>
     </div>
+
 
     <!--footer-->
     <footer class="card text-center fixed-bottom">
@@ -122,10 +133,14 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/javascript/food.js"></script>
 
 </body>
+
 </html>
