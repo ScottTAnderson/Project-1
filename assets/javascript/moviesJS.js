@@ -147,7 +147,7 @@ $(document).ready(function () {
         $('.genres .list-group-item').each(function () {
 
             // Settings
-
+//github
             //This sets up the whole checkbox selection
             var $widget = $(this)
             //Here a variable is created for the DOM checkbox object
@@ -172,21 +172,10 @@ $(document).ready(function () {
             // Event Handlers
             $widget.on('click', function () {
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
-
-                //this should check if the clicked box is checked, and subsequently removed the array item by its index
-                if ($checkbox.is(':checked') === "on" ) {
-                    debugger;
-                    var i = genresArray.index[this.attr('value')]
-                    genresArray.splice('index', i);
-                    console.log(genresArray);
-                } else {
-                    genresArray.push($widget.attr('value'));
-                    console.log(genresArray);
-                }
-
                 $checkbox.triggerHandler('change');
 
-                
+                genresArray.push($widget.attr('value'));
+                console.log(genresArray);
                 updateDisplay();
             });
             $checkbox.on('change', function () {
@@ -196,8 +185,8 @@ $(document).ready(function () {
 
             // Actions
             function updateDisplay() {
-                var isChecked = $checkbox.is(':checked');                    
-                
+                var isChecked = $checkbox.is(':checked');
+
                 // Set the button's state
                 $widget.data('state', (isChecked) ? "on" : "off");
 
@@ -328,12 +317,12 @@ $(document).ready(function () {
 
 
     $("#SubmitButton").on("click", function () {
+        debugger;
         getRandomMovie();
 
     });
 
     function getRandomMovie() {
-        debugger;
 
         //Get a random movie - comment this out.
         // var apiKey = '5eac88493bbb29ff93bb4bedf09e7f4e';
@@ -348,6 +337,9 @@ $(document).ready(function () {
         //This findMovie variable needs to go if you want to be querying using genres and years
         var findMovie = Math.floor(Math.random() * 20 + 1);
         var findPage = Math.floor(Math.random() * 20 + 1);
+        var decadesArraySort = decadesArray.sort();
+        var startDate = decadesArraySort[0] + '-1-1';
+        var endDate = decadesArraySort[decadesArray.length - 1] + '-12-31';
         var findGenres = genresArray.join('|');
 
         //Now to actually use the criteria checked in order to call a movie with the right genre and decade
@@ -362,7 +354,9 @@ $(document).ready(function () {
             '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' +
             findPage +
             '&primary_release_date.gte=' +
+            startDate +
             '&primary_release_date.lte=' +
+            endDate + 
             '&with_genres=' +
             findGenres; //The array needs to be updated based on genre boxes selected
         console.log(queryURL);
