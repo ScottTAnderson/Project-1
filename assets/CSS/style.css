@@ -1,26 +1,30 @@
-.jumbotron {
-    background-image: url(mountain.jpg);
-    background-size: 50%;
-    color: #FF530D;
-    -webkit-text-stroke: 1px lightgrey;
-    text-shadow: 2px 4px 6px white;
+.title {
+    letter-spacing: .05em;
+    text-shadow: 
+        4px 4px 0px #d5d5d5, 
+        7px 7px 0px rgba(0, 0, 0, 0.4);
 }
 body {
-    background-color: #ececec;
+    background-color: #feffff;
 }
 .btn {
-    background-color: #F78888;
-    border-color: #F78888;
-    color: black;
-    font-weight: bold;
+    background-color: #17252a;
+    border-color: #17252a;
+    color: #feffff;
+    font-weight: 600;
 }
 
 .nav-item {
-    color: black;
+    color: #feffff;
     font-weight: 600;
 }
 
 .navbar-brand {
     color: black;
     font-weight: 800;
+}
+
+.card-link {
+    color: #feffff;
+    font-weight: 600
 }
