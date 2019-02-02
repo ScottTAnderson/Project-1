@@ -1,4 +1,4 @@
-var GenresArray = ["Action", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film Noir", "History", "Horror", "Music", "Musical", "Mystery", "Romance", "Sci-Fi", "Short", "Sport", "Superhero", "Thriller", "War", "Western"];
+var genresArray = [];
 
 var genresObjectArray = [
     {
@@ -147,11 +147,11 @@ $(document).ready(function () {
             //This sets up the whole checkbox selection
             var $widget = $(this)
             //Here a variable is created for the DOM checkbox object
-            var $checkbox = $('<input type="checkbox" class="hidden" />')
+            var $checkbox = $('<input type="checkbox" class="hidden" />');
                 //Set a color for the whole checkbox selection
-            var color = ($widget.data('color') ? $widget.data('color') : "primary")
-            var style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
-                settings = {
+            var color = ($widget.data('color') ? $widget.data('color') : "primary");
+            var style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-");
+              var settings = {
                     on: {
                         icon: 'glyphicon glyphicon-check'
                     },
@@ -169,6 +169,9 @@ $(document).ready(function () {
             $widget.on('click', function () {
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
+                
+                genresArray.push($widget.attr('value'));
+                console.log(genresArray);
                 updateDisplay();
             });
             $checkbox.on('change', function () {
