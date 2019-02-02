@@ -147,7 +147,7 @@ $(document).ready(function () {
         $('.genres .list-group-item').each(function () {
 
             // Settings
-
+//github
             //This sets up the whole checkbox selection
             var $widget = $(this)
             //Here a variable is created for the DOM checkbox object
