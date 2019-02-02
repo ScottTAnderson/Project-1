@@ -189,8 +189,6 @@ $(document).ready(function () {
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
 
-                genresArray.push($widget.attr('value'));
-                console.log(genresArray);
                 updateDisplay();
             });
             $checkbox.on('change', function () {
