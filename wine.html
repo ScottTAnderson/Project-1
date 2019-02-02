@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body style="background-color:#EFAB1F">
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#">Login</a>
+    <nav class="navbar navbar-expand-lg" style="background-color:#33ABB1">
+        <a class="navbar-brand" style="color: #103754" href="#">Login</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,18 +24,18 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="wine.html">Drinks</a>
                 <a class="nav-item nav-link active" href="food.html">Food</a>
+                <a class="nav-item nav-link active" href="wine.html">Drinks</a>
                 <a class="nav-item nav-link active" href="movie.html">Movie</a>
             </div>
         </div>
     </nav>
 
     <!--Jumbotron-->
-    <div class="jumbotron jumbotron-fluid text-center">
+    <div class="jumbotron jumbotron-fluid text-center" style="background-color:#33ABB1">
         <div class="container">
-            <h1 class="display-4">Date Night!</h1>
-            <h2 class="lead">Need drink, food, and movie options for your date night?<h2>
+            <h1 class="display-4" style="font-weight:800;color:#ffffff">Bottoms Up</h1>
+            <h4 style="color:#ffffff">Now add a drink to your meal!<h4>
         </div>
     </div>
 
@@ -43,13 +43,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-12 mb-4 mb-4">
-                <div class="card">
+                <div class="card" style="background-color:#33ABB1">
                     <div class="card-body">
-                        <h5 class="card-title">Let's find you a drink!</h5>
-                        <p class="card-text">Use the form below to generate drink ideas for your date night!</p>
+                        <h5 class="card-title" style="color:#ffffff">Let's find you a drink!</h5>
+                        <p class="card-text" style="color:#ffffff">Use the form below to generate drink ideas for your date night!</p>
                         <form>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1" class="ingredient">Ingredient Choices</label>
+                                <label for="exampleFormControlSelect1" style="color:#ffffff" class="ingredient">Ingredient Choices</label>
                                 <select class="custom-select" multiple id="ingredientForm">
                                     <option value="Non_Alcoholic">Non-Alcoholic</option>
                                     <option value="Rum">Rum</option>
@@ -61,7 +61,7 @@
                                     <!-- <option value="random">Bartender's Choice</option> -->
                                 </select>
                                 <div class="mt-4">
-                                    <button type="button" class="btn btn-primary" id="search">Search</button>
+                                    <button type="button" style="background-color:#103754;border-color:#103754" class="btn btn-primary" id="search">Search</button>
                                 </div>
                             </div>
                         </form>
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-12 col-12 mb-4">
-                <div class="card mb-4">
+                <div class="card mb-4" style="background-color:#33ABB1">
                     <img src="./assets/images/stockdrinkimage.jpg" class="card-img-top drink-image" alt="">
                     <div class="card-body">
                         <p class="card-text drink-name font-weight-bold"></p>
@@ -78,16 +78,16 @@
                         <p class="card-text drink-text"></p>
                     </div>
                 </div>
-                <input class="btn btn-primary shopping-btn" type="submit" value="Save This Drink">
+                <input class="btn btn-primary shopping-btn" style="background-color:#103754;border-color:#103754" type="submit" value="Save This Drink">
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Items Selected</h5>
-                        <p class="card-text">Example text for saved food, drink, and movie selections.</p>
+                <div class="card mb-4" style="border-color:#33ABB1">
+                    <div class="card-body" style="background-color:#33ABB1">
+                        <h5 class="card-title" style="color:#ffffff">Items Selected</h5>
+                        <p class="card-text" style="color:#ffffff">Example text for saved food, drink, and movie selections.</p>
                     </div>
                 </div>
-                <a class="btn" href="movie.html">Find a Movie!</a>
+                <a class="btn" style="background-color:#103754;border-color:#103754" href="movie.html">Find a Movie!</a>
             </div>
         </div>
     </div>
