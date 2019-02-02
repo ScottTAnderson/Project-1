@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
-<body>
+<body style="background-color:#103754">
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Login</a>
+    <nav class="navbar navbar-expand-lg" style="background-color:#FE5F1B">
+        <a class="navbar-brand" href="#" style="color: #103754">Login</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,18 +24,18 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="wine.html">Wine</a>
                 <a class="nav-item nav-link active" href="food.html">Food</a>
-                <a class="nav-item nav-link active" href="movie.html">Movie</a>
+                <a class="nav-item nav-link active" href="wine.html">Drinks</a>
+                <a class="nav-item nav-link active" href="movie.html">Movies</a>
             </div>
         </div>
     </nav>
 
     <!--Jumbotron-->
-    <div class="jumbotron jumbotron-fluid text-center">
+    <div class="jumbotron jumbotron-fluid text-center" style="background-color: #FE5F1B">
         <div class="container">
-            <h1 class="display-4">Date Night!</h1>
-            <h2 class="lead">Need wine, food, and movie options for your date night?<h2>
+            <h1 class="display-4" style="font-weight:800;color:#ffffff">Dinner Time</h1>
+            <h4 style="color:#ffffff">Search for a meal below!<h4>
         </div>
     </div>
 
@@ -44,14 +44,14 @@
         <div class="row">
 
             <div class="col-lg-3 col-md-3 col-sm-12 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">What are you eating tonight?</h5>
-                        <p class="card-text"> Brainstorming diner ideas has never been easier. Use the form below for
+                <div class="card" style="border-color:#FE5F1B">
+                    <div class="card-body" style="background-color:#FE5F1B">
+                        <h5 class="card-title" style="font-weight:800;color:#ffffff">What are you eating tonight?</h5>
+                        <p class="card-text" style="color:#ffffff"> Brainstorming diner ideas has never been easier. Use the form below for
                             your desired requirements and click search. A meal option will be provided!</p>
                         <form>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1" class="protein">Select a Protein</label>
+                                <label for="exampleFormControlSelect1" style="color:#ffffff" class="protein">Select a Protein</label>
                                 <select class="custom-select" multiple id="proteinForm">
                                     <option value="beef">Beef</option>
                                     <option value="chicken">Chicken</option>
@@ -63,7 +63,7 @@
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1">Select a Diet (optional)</label>
+                                <label for="exampleFormControlSelect1" style="color:#ffffff">Select a Diet (optional)</label>
                                 <select class="custom-select" multiple id="dietForm">
                                     <option value="balanced">Balanced</option>
                                     <option value="high-protein">High Protien</option>
@@ -72,7 +72,7 @@
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1">Select an Allergy (optional)</label>
+                                <label for="exampleFormControlSelect1" style="color:#ffffff">Select an Allergy (optional)</label>
                                 <select class="custom-select" multiple id="allergyForm">
                                     <option value="peanut-free">Peanut Free</option>
                                     <option value="tree-nut-free">Tree Nuts Free</option>
@@ -80,36 +80,37 @@
                                     <option value="alcohol-free">Alcohol Free</option>
                                 </select>
                                 <div class="mt-4">
-                                    <button type="button" class="btn btn-primary" id="search">Search</button>
+                                    <button type="button" style="background-color:#33ABB1;border-color:#33ABB1" class="btn btn-primary" id="search">Search</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 col-12">
-                <div class="card mb-4">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-12" style="border-color:#FE5F1B">
+                <div class="card mb-4" style="background-color:#FE5F1B">
                     <img src="./assets/images/stockfoodimage.jpg" class="card-img-top food-image" alt="">
                     <div class="card-body">
+                        <p class="card-text recipe-name font-weight-bold"></p>   
                         <p class="card-text recipe-text"></p>
                         <a class="card-text recipe-link"></a>
                     </div>
                 </div>
-                <input class="btn btn-primary shopping-btn" type="submit" value="Save This Meal">
+                <input class="btn btn-primary shopping-btn" style="background-color:#33ABB1;border-color:#33ABB1" type="submit" value="Save This Meal">
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                 <div class="mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Tonight's Order</h5>
-                            <p class="card-text">Your saved selections.</p>
+                    <div class="card" style="border-color:#FE5F1B">
+                        <div class="card-body" style="background-color:#FE5F1B;border-color:#FE5F1B">
+                            <h5 class="card-title" style="font-weight:800;color:#ffffff">Tonight's Order</h5>
+                            <p class="card-text" style="color:#ffffff">Your saved selections.</p>
                             <div class="form-group">
                                 <textarea class="form-control" id="shoppingList" rows="10"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a class="btn" href="wine.html">Find a Drink!</a>
+                <a class="btn" style="background-color:#33ABB1;border-color:#33ABB1" href="wine.html">Find a Drink!</a>
             </div>
         </div>
 
