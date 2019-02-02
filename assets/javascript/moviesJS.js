@@ -147,7 +147,7 @@ $(document).ready(function () {
         $('.genres .list-group-item').each(function () {
 
             // Settings
-//github
+
             //This sets up the whole checkbox selection
             var $widget = $(this)
             //Here a variable is created for the DOM checkbox object
@@ -172,10 +172,21 @@ $(document).ready(function () {
             // Event Handlers
             $widget.on('click', function () {
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
+
+                //this should check if the clicked box is checked, and subsequently removed the array item by its index
+                if ($checkbox.is(':checked') === "on" ) {
+                    debugger;
+                    var i = genresArray.index[this.attr('value')]
+                    genresArray.splice('index', i);
+                    console.log(genresArray);
+                } else {
+                    genresArray.push($widget.attr('value'));
+                    console.log(genresArray);
+                }
+
                 $checkbox.triggerHandler('change');
 
-                genresArray.push($widget.attr('value'));
-                console.log(genresArray);
+                
                 updateDisplay();
             });
             $checkbox.on('change', function () {
@@ -185,8 +196,8 @@ $(document).ready(function () {
 
             // Actions
             function updateDisplay() {
-                var isChecked = $checkbox.is(':checked');
-
+                var isChecked = $checkbox.is(':checked');                    
+                
                 // Set the button's state
                 $widget.data('state', (isChecked) ? "on" : "off");
 
