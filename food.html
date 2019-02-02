@@ -40,10 +40,10 @@
     </div>
 
     <!--Main Card-->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
 
-            <div class="col mb-4">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">What are you eating tonight?</h5>
@@ -53,11 +53,13 @@
                             <div class="form-group font-weight-bold">
                                 <label for="exampleFormControlSelect1" class="protein">Select a Protein</label>
                                 <select class="custom-select" multiple id="proteinForm">
-                                    <option value="chicken">Chicken</option>
                                     <option value="beef">Beef</option>
+                                    <option value="chicken">Chicken</option>
+                                    <option value="fish">Fish</option>
                                     <option value="pork">Pork</option>
                                     <option value="vegetarian">Vegetarian</option>
-                                    <option value="fish">Fish</option>
+                                    <option value="vegan">Vegan</option>
+                                    
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
@@ -65,23 +67,17 @@
                                 <select class="custom-select" multiple id="dietForm">
                                     <option value="balanced">Balanced</option>
                                     <option value="high-protein">High Protien</option>
-                                    <option value="high-fiber">High Fiber</option>
                                     <option value="low-fat">Low Fat</option>
                                     <option value="low-carb">Low Carb</option>
-                                    <option value="low-sodium">Low Sodium</option>
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
                                 <label for="exampleFormControlSelect1">Select an Allergy (optional)</label>
                                 <select class="custom-select" multiple id="allergyForm">
-                                    <option value="dairy-free">Dairy Free</option>
-                                    <option value="egg-free">Eggs Free</option>
-                                    <option value="gluten-free">Gluten Free</option>
                                     <option value="peanut-free">Peanut Free</option>
-                                    <option value="shellfish-free">Shellfish Free</option>
-                                    <option value="soy-free">Soy Free</option>
-                                    <option value="fish-free">Fish Free</option>
                                     <option value="tree-nut-free">Tree Nuts Free</option>
+                                    <option value="sugar-conscious">Sugar Conscious</option>
+                                    <option value="alcohol-free">Alcohol Free</option>
                                 </select>
                                 <div class="mt-4">
                                     <button type="button" class="btn btn-primary" id="search">Search</button>
@@ -91,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col mb-4">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-12">
                 <div class="card mb-4">
                     <img src="./assets/images/stockfoodimage.jpg" class="card-img-top food-image" alt="">
                     <div class="card-body">
@@ -99,30 +95,29 @@
                         <a class="card-text recipe-link"></a>
                     </div>
                 </div>
+
+
+                <div class="col-lg-3 col-md-3 col-sm-12 col-12"></div>
+                <input class="btn btn-primary shopping-btn" type="submit" value="Save This Meal">
             </div>
-            <div class="col mb-4">
-                <div class="mb-4">
-                    <input class="btn btn-primary shopping-btn" type="submit" value="Add to Shopping List">
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Shopping List</h5>
-                            <p class="card-text">Enter any items for your shopping list.</p>
-                            <div class="form-group">
-                                <textarea class="form-control" id="shoppingList" rows="10"></textarea>
-                            </div>
-                            <div>
-                                <input class="btn btn-primary mb-4 save-btn" type="submit" value="Save">
-                            </div>
+            <div class="mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tonight's Order</h5>
+                        <p class="card-text">Your saved selections.</p>
+                        <div class="form-group">
+                            <textarea class="form-control" id="shoppingList" rows="10"></textarea>
+                        </div>
+                        <div>
+                            <input class="btn btn-primary mb-4 save-btn" type="submit" value="Save">
                         </div>
                     </div>
                 </div>
-                <a href="wine.html" class="card-link">Wine Selector</a>
-                <a href="food.html" class="card-link">Food Selector</a>
-                <a href="movie.html" class="card-link">Movie Selector</a>
-            </div>
+
+            <a href="wine.html" class="card-link">That looks tasty! How about we find a drink to pair. </a>
+ 
         </div>
+    </div>
     </div>
 
 

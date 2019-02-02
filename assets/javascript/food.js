@@ -42,18 +42,20 @@ $(document).ready(function() {
         $('.food-image').attr('src', foodImage);
         //Calories. May not end up using
         foodCalories = answer.hits[randomRecipe].recipe.calories;
-        $('.recipe-text').append('<br>Calories: ' + foodCalories.toFixed(2));
+        $('.recipe-text').append('<br><br>Calories: ' + foodCalories.toFixed(0) + '<br><br>Ingredients:<br>');
         //Ingredients. It is an array of strings
         foodIngredients = answer.hits[randomRecipe].recipe.ingredientLines;
-        for (i = 0; i < foodIngredients.lenth; i++) {
-            $('.recipe-text').append(foodIngredients[i]);
-        }
+        console.log(foodIngredients);
+        for (i = 0; i < foodIngredients.length; i++) {
+            $('.recipe-text').append(foodIngredients[i] + '<br>');
+        };
         //Link to full recipe website with prep instructions
         foodPrepSite = answer.hits[randomRecipe].recipe.url;
         $('.recipe-link').attr('href', foodPrepSite);
+        $('.recipe-link').attr('target', 'blank');
         $('.recipe-link').text(foodPrepSite);
     })
-    }
+    };
 
     $('#proteinForm').on('click', function(){
         protein = $('#proteinForm option:selected').val().trim();
