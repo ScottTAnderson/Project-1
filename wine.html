@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Date Night! | Wine</title>
     <!--Bootstrap CSS Link-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
     <!--External CSS link-->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg" style="background-color:#f3d250">
+    <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="#">Login</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -28,7 +32,7 @@
     </nav>
 
     <!--Jumbotron-->
-    <div class="jumbotron jumbotron-fluid text-center" style="background-color:#90CCFD">
+    <div class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <h1 class="display-4">Date Night!</h1>
             <h2 class="lead">Need drink, food, and movie options for your date night?<h2>
@@ -38,56 +42,60 @@
     <!--Main Card-->
     <div class="container">
         <div class="row">
-            <div class="col">
-                    <div class="card" style="background-color: #f3d250">
-                    <div class="card-body">
-                        <h5 class="card-title">Items Selected</h5>
-                        <p class="card-text">Example text for saved food, drink, and movie selections.</p>
-                        <div>
-                            <input class="btn btn-primary mb-4 save-btn" type="submit" value="Save">
-                        </div>                        
-                    </div>
-                </div>             
-            </div>
-            <div class="col mb-4">
-                    <div class="card" style="background-color:#90CCF4">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12 mb-4 mb-4">
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Let's find you a drink!</h5>
                         <p class="card-text">Use the form below to generate drink ideas for your date night!</p>
                         <form>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1">Ingredient Choices</label>
-                                <select class="custom-select" multiple id="ingredientForm" style="background-color: #ececec">
-                                    <option value="Non alcoholic">Non-Alcoholic</option>
+                                <label for="exampleFormControlSelect1" class="ingredient">Ingredient Choices</label>
+                                <select class="custom-select" multiple id="ingredientForm">
+                                    <option value="Non_Alcoholic">Non-Alcoholic</option>
                                     <option value="Rum">Rum</option>
                                     <option value="Scotch">Scotch</option>
                                     <option value="Whiskey">Whiskey</option>
                                     <option value="Vodka">Vodka</option>
                                     <option value="Bourbon">Bourbon</option>
                                     <option value="Gin">Gin</option>
+                                    <!-- <option value="random">Bartender's Choice</option> -->
                                 </select>
                                 <div class="mt-4">
-                                    <button type="button" class="btn btn-primary">Search</button>
+                                    <button type="button" class="btn btn-primary" id="search">Search</button>
                                 </div>
                             </div>
-                        </form>                        
-                        <div class="card mb-4">
-                            <img src="./assets/images/wine.jpeg" class="card-img-top drink-image" alt="">
-                            <div class="card-body">
-                                <p class="card-text drink-text">drink + food combo example text</p>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <input class="btn btn-primary shopping-btn" type="submit" value="Add to Shopping List">
-                        </div>
-                        <a href="wine.html" class="card-link">Drink Selector</a>
-                        <a href="food.html" class="card-link">Food Selector</a>
-                        <a href="movie.html" class="card-link">Movie Selector</a>
+                        </form>
                     </div>
-                </div>             
+                </div>
             </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-12 mb-4">
+                <div class="card mb-4">
+                    <img src="./assets/images/stockdrinkimage.jpg" class="card-img-top drink-image" alt="">
+                    <div class="card-body">
+                        <p class="card-text drink-name font-weight-bold"></p>
+                        <p class="card-text drink-ingredients"></p>
+                        <p class="card-text drink-measurements"></p>
+                        <p class="card-text drink-text"></p>
+                    </div>
+                </div>
+                <input class="btn btn-primary shopping-btn" type="submit" value="Save This Drink">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Items Selected</h5>
+                        <p class="card-text">Example text for saved food, drink, and movie selections.</p>
+                        <div>
+                            <input class="btn btn-primary mb-4 save-btn" type="submit" value="Save">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="movie.html" class="card-link">Now, let's find something to watch!</a>
         </div>
     </div>
+
+    <a href="movie.html" class="card-link">Perfect! Now, for some entertainment. </a>
 
     <!--footer-->
     <footer class="card mt-auto text-center fixed-bottom">
@@ -96,6 +104,15 @@
         </div>
     </footer>
 
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/cocktail.js"></script>
+
+
 </body>
+
 </html>
