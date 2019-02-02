@@ -1,25 +1,31 @@
 $(document).ready(function() {
 
-    var queryParam = '';
     var foodName;
     var foodImage;
     var foodCalories;
     var foodIngredients = [];
     var foodPrepSite;
+    var queryURL;
+    var protein = '';
+    var diet = '';
+    var allergy = '';
 
     function getRecipe() {
-        var randomRecipe = Math.floor(Math.random() * 100 + 1);
+        var randomRecipe = Math.floor(Math.random() * 10 + 1);
         var appID = 'c7db65d2';
         var appKey = 'eabbd467ce4d304a551a72e85f1f0ef1';
         
         //var recipeID = $('.userProtein').val(); //use the input value for protein in HTML
-        var queryURL = 'https://api.edamam.com/search?q=' +
-            queryParam +
-            '&from=0&to=100&app_id=' +
+        queryURL = 'https://api.edamam.com/search?q=' +
+            protein +
+            '&app_id=' +
             appID +
             '&app_key=' +
-            appKey;
-    
+            appKey +
+            '&from=0&to=10' +
+            diet +
+            allergy;
+
     $.ajax({
         url: queryURL,
         method: 'GET',
@@ -49,10 +55,6 @@ $(document).ready(function() {
     })
     }
 
-    var protein = '';
-    var diet = '';
-    var allergy = '';
-
     $('#proteinForm').on('click', function(){
         protein = $('#proteinForm option:selected').val().trim();
         console.log(protein);
@@ -64,7 +66,8 @@ $(document).ready(function() {
     });
 
     $('#allergyForm').on('click', function(){
-        allergy = '&health=' + $('#allergyForm option:selected').val().trim();
+        var allergyConcat = '&health=' + $('#allergyForm option:selected').val().trim();
+        allergy += allergyConcat;
         console.log(allergy);
     });
 
@@ -73,7 +76,6 @@ $(document).ready(function() {
             $('.protein').css('color', 'red');
             $('.protein').append(' (Required) ');
         } else {
-            queryParam = protein += diet += allergy;
             getRecipe();
             $('.protein').css('color', 'black');
             $('.protein').text('Select a Protein');

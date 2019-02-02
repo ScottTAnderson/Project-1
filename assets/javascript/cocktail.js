@@ -1,49 +1,50 @@
-$(document).ready(function(){
-
-    var drinkName;
-    var drinkIngredient;
-    var drinkMeasurement;
-    var drinkInstructions;
-    var drinkImage;
+$(document).ready(function () {
+    var ingredient = '';
+    var alcoholIndicator = '';
 
     //Get cocktail
     function getCocktail() {
         var apiKey = '1';
-        //var ingredient = $(.ingredient).val(); //use the input value for ingredient in HTML
-        var queryURL = 'https://www.thecocktaildb.com/api/json/v1/' + apiKey + '/filter.php?i=' + ingredient;
+        var queryURL = 'https://www.thecocktaildb.com/api/json/v1/' + apiKey + '/filter.php?' + alcoholIndicator + ingredient;
 
         $.ajax({
             url: queryURL,
             method: 'GET',
-        }).then(function(drink) {
-            var randomDrink = Math.floor(Math.random()* drink.drinks.length + 1);
-            console.log(drink.drinks[randomDrink].idDrink);
-            console.log(drink);
-            console.log(randomDrink);
+        }).then(function (drink) {
+            var randomDrink = Math.floor(Math.random() * drink.drinks.length + 1);
             drinkID = drink.drinks[randomDrink].idDrink;
             queryURL = 'https://www.thecocktaildb.com/api/json/v1/' + apiKey + '/lookup.php?i=' + drinkID
             $.ajax({
                 url: queryURL,
                 method: 'GET',
-            }).then(function(drinkDetails){
-                console.log(drinkDetails.drinks[0]);
-                //drink name
+            }).then(function (drinkDetails) {
+                var drinkInstructions;
+                var drinkImage;
+                var drinkName;
+                $('.drink-ingredients').text('');
+                $('.drink-measurements').text('');
+                
+                //Display list of ingredients
+                for (var i = 1; i < 16; i++) {
+                    var ingredientNumber = 'strIngredient' + i;
+                    var isIngredient = drinkDetails.drinks[0][ingredientNumber];
+                    if (isIngredient.length > 2) {
+                        $('.drink-ingredients').append(isIngredient + '<br>');
+                    };
+                };
+
+                //Display list of measurments
+                for (var i = 1; i < 16; i++) {
+                    var measureNumber = 'strMeasure' + i;
+                    var isMeasurement = drinkDetails.drinks[0][measureNumber]
+                    if (isMeasurement.length > 2) {
+                        $('.drink-measurements').append(isMeasurement + '<br>');
+                    };
+                };
+
+                //Display drink name
                 drinkName = drinkDetails.drinks[0].strDrink;
                 $('.drink-name').text(drinkName);
-
-                //ingredint measurements -- need to iterate over 1-15, checking to see if a measurement exists
-                drinkMeasurement = drinkDetails.drinks[0].strMeasure1;
-                for (i=0; i<drinkMeasurement.length; i++) {
-                    $('.drink-ingredients').append(drinkMeasurement[i]);
-                }
-                console.log(drinkDetails.drinks[0].strMeasure1)
-
-                //ingredients -- need to iterate over 1-15, checking to see if an ingredient exists
-                drinkIngredient = drinkDetails.drinks[0].strIngredient1;
-                for (i=0; i<drinkIngredient.length; i++) {
-                    $('.drink-ingredients').append(drinkIngredient[i]);
-                }
-                console.log(drinkDetails.drinks[0].strIngredient1)
 
                 //directions for making
                 drinkInstructions = drinkDetails.drinks[0].strInstructions
@@ -51,30 +52,29 @@ $(document).ready(function(){
 
                 //image url for drink
                 drinkImage = drinkDetails.drinks[0].strDrinkThumb;
-                $('.drink-image').attr('src', drinkImage); 
+                $('.drink-image').attr('src', drinkImage);
             });
         });
     };
-    
-    var ingredient = '';
 
-    $('#ingredientForm').on('click', function(){
+    $('#ingredientForm').on('click', function () {
         ingredient = $('#ingredientForm option:selected').val().trim();
         console.log(ingredient);
     });
 
-    $('#search').on('click', function() {
+    $('#search').on('click', function () {
         if (ingredient === '') {
             $('.ingredient').css('color', 'red');
-            $('.ingredient').append(' (Required) ');
+            $('.ingredient').text('Ingredient Choices (required)');
         } else {
+            if (ingredient == 'Non_Alcoholic') {
+                alcoholIndicator = 'a=';
+            } else {
+                alcoholIndicator = 'i=';
+            }
             getCocktail();
             $('.ingredient').css('color', 'black');
-            $('.ingredient').text('Select a Protein');
+            $('.ingredient').text('Ingredient Choices');
         }
     });
-
-
-
-
 });
