@@ -83,7 +83,7 @@ var genresObjectArray = [
     }
 ];
 
-var decadesArray = [
+var decadesObj = [
     {
         "id": "2010s",
         "start": 2010,
@@ -144,7 +144,7 @@ $(document).ready(function () {
 
     //Necessary JS for the checkboxes to work
     $(function () {
-        $('.list-group.checked-list-box .list-group-item').each(function () {
+        $('.genres .list-group-item').each(function () {
 
             // Settings
 
@@ -224,7 +224,7 @@ $(document).ready(function () {
 //
 //
         //Isolating the logic for the decades array
-        $('decades .list-group-item').each(function () {
+        $('.decades .list-group-item').each(function () {
 
             // Settings
 
@@ -254,7 +254,7 @@ $(document).ready(function () {
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
                 
-                genresArray.push($widget.attr('value'));
+                decadesArray.push($widget.attr('value'));
                 console.log(decadesArray);
                 updateDisplay();
             });
