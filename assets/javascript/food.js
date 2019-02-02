@@ -11,7 +11,7 @@ $(document).ready(function() {
     var allergy = '';
 
     function getRecipe() {
-        var randomRecipe = Math.floor(Math.random() * 10 + 1);
+        var randomRecipe = Math.floor(Math.random() * 100 + 1);
         var appID = 'c7db65d2';
         var appKey = 'eabbd467ce4d304a551a72e85f1f0ef1';
         
@@ -22,7 +22,7 @@ $(document).ready(function() {
             appID +
             '&app_key=' +
             appKey +
-            '&from=0&to=10' +
+            '&from=0&to=100' +
             diet +
             allergy;
 
