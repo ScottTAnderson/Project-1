@@ -12,3 +12,25 @@
     margin-bottom: 0px;
 }
 
+body {
+    margin-bottom: 50px;
+}
+
+.nav-item {
+    color: #feffff;
+    font-weight: 600;
+}
+
+.navbar-brand {
+    color: black;
+    font-weight: 800;
+}
+
+.card-link {
+    color: #feffff;
+    font-weight: 600
+}
+
+.btn {
+    font-weight: 600;
+}

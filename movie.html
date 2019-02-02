@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #D53D13">
     <!-- Add in the AJAX code -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -32,8 +32,8 @@
     <!-- don't need this... just going to take the relevant API call and put in into the movies HTML page -->
     <!-- <script src="assets/javascript/api.js"></script> -->
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Login</a>
+    <nav class="navbar navbar-expand-lg" style="background-color: #103754">
+        <a class="navbar-brand" style="color:#EFAB1F" href="#">Login</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,10 +49,10 @@
     </nav>
 
     <!--Jumbotron-->
-    <div class="jumbotron jumbotron-fluid text-center">
+    <div class="jumbotron jumbotron-fluid text-center" style="background-color: #103754">
         <div class="container">
-            <h1 class="display-4">Date Night!</h1>
-            <h2 class="lead">Need wine, food, and movie options for your date night?<h2>
+            <h1 class="display-4" style="font-weight:800;color:#ffffff">Movie Magic</h1>
+            <h4 style="color:#ffffff">Find a flick to complete the night!<h4>
         </div>
     </div>
 
@@ -89,8 +89,8 @@
                     </div> -->
 
 
-            <div class="col-md-6">
-                <h5 class="text-center">Select Your Movie Genres!</h5>
+            <div class="col-md-6" style="background-color: #103754">
+                <h5 class="text-center mb-4 mt-4" style="color:#ffffff">Select Your Movie Genres!</h5>
                 <div class="well" style="max-height: 200px;overflow: auto;">
                     <ul class="checked-list-box list-group genres">
                         <li class="list-group-item" value="28">Action</li>
@@ -116,7 +116,7 @@
                 </div>
 
 
-                <h5 class="text-center" id="DecadeLabel">From What Decade?</h5>
+                <h5 class="text-center mb-4 mt-4" style="color:#ffffff" id="DecadeLabel">From What Decade?</h5>
                 <div class="well" style="max-height: 300px;overflow: auto;">
                     <ul class="checked-list-box list-group decades">
                         <li class="list-group-item" value="2010">2010s</li>
@@ -129,8 +129,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-6">
-                    <h5 class="text-center" id="MovieLabel">Your Movie Choice!</h5>
+            <div class="col-md-6" style="background-color: #103754">
+                    <h5 class="text-center mb-4 mt-4" id="MovieLabel" style="color:#ffffff">Your Movie Choice!</h5>
                 <div class="card">
                     
                     <div class="card-body">
@@ -138,12 +138,14 @@
                         <!-- CSS style this to arrange the Title, Year, and Runtime adjacent to the poster image -->
                         
                         <img src="https://via.placeholder.com/300x444" id="MoviePoster">
-                        <p id="MovieTitle" class="card-text">Fill this with the movie "Title" element</p>
-                        <p id="MovieYear" class="card-text">Fill this with the movie "Year" element</p>
-                        <p id="MovieRuntime" class="card-text">Fill this with the movie "Runtime" element</p>
-                        <p id="MoviePlot" class="card-text">Fill this with the movie "Plot" element</p>
-                        <a href="#" id="SubmitButton" class="btn btn-primary">Submit and search!</a>
+                        <p id="MovieTitle" class="card-text"></p>
+                        <p id="MovieYear" class="card-text"></p>
+                        <p id="MovieRuntime" class="card-text"></p>
+                        <p id="MoviePlot" class="card-text"></p>    
                     </div>
+                </div>
+                <div>
+                    <a href="#" style="background-color:#EFAB1F;border-color:#EFAB1F" id="SubmitButton" class="btn btn-primary mb-4 mt-4">Submit and search!</a>
                 </div>
             </div>
 
@@ -151,9 +153,9 @@
 
 
         <!--footer-->
-        <footer class="card text-center fixed-bottom">
+        <footer class="card text-center fixed-bottom" style="background-color: #103754">
             <div class="container">
-                <span class="text-muted">© 2019 Copyright</span>
+                <span style="color:#ffffff">© 2019 Copyright</span>
             </div>
         </footer>
 
