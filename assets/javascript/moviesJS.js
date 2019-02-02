@@ -171,19 +171,22 @@ $(document).ready(function () {
 
             // Event Handlers
             $widget.on('click', function () {
-                $checkbox.prop('checked', !$checkbox.is(':checked'));
 
                 //this should check if the clicked box is checked, and subsequently removed the array item by its index
-                if ($checkbox.is(':checked') === "on" ) {
-                    debugger;
-                    var i = genresArray.index[this.attr('value')]
-                    genresArray.splice('index', i);
+                if ($checkbox.is(':checked')) {
+                    
+                    // var i = genresArray.index[$widget.attr('value')]
+                    // genresArray.splice('index', i);
+                    genresArray = genresArray.filter(function(value, index, arr) {
+                        return value !== $widget.attr('value')
+                    });
                     console.log(genresArray);
                 } else {
                     genresArray.push($widget.attr('value'));
                     console.log(genresArray);
                 }
 
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
 
                 
@@ -262,11 +265,26 @@ $(document).ready(function () {
 
             // Event Handlers
             $widget.on('click', function () {
+                
+                if ($checkbox.is(':checked')) {
+                  
+                    // var i = genresArray.index[$widget.attr('value')]
+                    // genresArray.splice('index', i);
+                    decadesArray = decadesArray.filter(function(value, index, arr) {
+                        return value !== $widget.attr('value')
+                    });
+                    console.log(decadesArray);
+                } else {
+                    decadesArray.push($widget.attr('value'));
+                    console.log(decadesArray);
+                }
+
+                
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
                 
-                decadesArray.push($widget.attr('value'));
-                console.log(decadesArray);
+                // decadesArray.push($widget.attr('value'));
+                // console.log(decadesArray);
                 updateDisplay();
             });
             $checkbox.on('change', function () {
