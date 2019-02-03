@@ -1,13 +1,14 @@
+.jumbotron {
+    padding: -150px;
+}
+
 .title {
     letter-spacing: .05em;
     text-shadow: 
         4px 4px 0px #d5d5d5, 
         7px 7px 0px rgba(0, 0, 0, 0.4);
 }
-body {
-    background-color: #feffff;
-    margin-bottom: 50px;
-}
+
 .btn {
     background-color: #17252a;
     border-color: #17252a;
@@ -45,4 +46,8 @@ a {
 .card-body {
     height: 100%;
     overflow: auto;
+}
+
+.btn:hover {
+    color:rgb(255, 197, 197)
 }
