@@ -26,7 +26,23 @@ body {
 }
 
 .card-link {
-    color: #feffff;
+    color: yellow;
     font-weight: 600
 }
 
+.card {
+    height: 750px;
+}
+
+.recipe-text, .recipe-name, .card-text {
+    color: white;
+}
+
+a {
+    color: yellow;
+}
+
+.card-body {
+    height: 100%;
+    overflow: auto;
+}

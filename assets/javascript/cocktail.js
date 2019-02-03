@@ -35,7 +35,6 @@ $(document).ready(function () {
                     };
                 };
                 
-
                 //Display drink name
                 drinkName = drinkDetails.drinks[0].strDrink;
                 $('.drink-name').text(drinkName);
@@ -58,7 +57,7 @@ $(document).ready(function () {
 
     $('#search').on('click', function () {
         if (ingredient === '') {
-            $('.ingredient').css('color', 'red');
+            $('.ingredient').css('color', 'yellow');
             $('.ingredient').text('Ingredient Choices (required)');
         } else {
             if (ingredient == 'Non_Alcoholic') {
@@ -67,7 +66,7 @@ $(document).ready(function () {
                 alcoholIndicator = 'i=';
             }
             getCocktail();
-            $('.ingredient').css('color', 'black');
+            $('.ingredient').css('color', 'white');
             $('.ingredient').text('Ingredient Choices');
         }
     });
