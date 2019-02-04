@@ -35,14 +35,16 @@ $(document).ready(function() {
         console.log(answer.hits[randomRecipe].recipe);
         //Name of Dish
         foodName = answer.hits[randomRecipe].recipe.label;
-        $('.recipe-text').text(foodName);
+        $('.recipe-name').text(foodName);
         //Image path
         foodImage = answer.hits[randomRecipe].recipe.image;
         console.log(foodImage);
         $('.food-image').attr('src', foodImage);
         //Calories. May not end up using
         foodCalories = answer.hits[randomRecipe].recipe.calories;
-        $('.recipe-text').append('<br><br>Calories: ' + foodCalories.toFixed(0) + '<br><br>Ingredients:<br>');
+        $('.recipe-calories').html('Calories: ');
+        $('.recipe-calorie-count').html(foodCalories.toFixed(0) + '<br><br>');
+        $('.recipe-ingredients').html('Ingredients:<br>');
         //Ingredients. It is an array of strings
         foodIngredients = answer.hits[randomRecipe].recipe.ingredientLines;
         console.log(foodIngredients);
@@ -75,11 +77,11 @@ $(document).ready(function() {
 
     $('#search').on('click', function() {
         if (protein === '') {
-            $('.protein').css('color', 'red');
+            $('.protein').css('color', 'yellow');
             $('.protein').append(' (Required) ');
         } else {
             getRecipe();
-            $('.protein').css('color', 'black');
+            $('.protein').css('color', 'white');
             $('.protein').text('Select a Protein');
         }
     });

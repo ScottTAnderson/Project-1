@@ -43,15 +43,17 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12 mb-4">
-                <div class="card" style="border-color:#FE5F1B">
-                    <div class="card-body" style="background-color:#FE5F1B">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12 mb-4">
+                <div class="card" style="background-color:#FE5F1B">
+                    <div class="card-body" style="border-color:black">
                         <h5 class="card-title" style="font-weight:800;color:#ffffff">What are you eating tonight?</h5>
-                        <p class="card-text" style="color:#ffffff"> Brainstorming diner ideas has never been easier. Use the form below for
+                        <p class="card-text" style="color:#ffffff"> Brainstorming dinner ideas has never been easier.
+                            Use the form below for
                             your desired requirements and click search. A meal option will be provided!</p>
                         <form>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1" style="color:#ffffff" class="protein">Select a Protein</label>
+                                <label for="exampleFormControlSelect1" style="color:#ffffff" class="protein">Select a
+                                    Protein</label>
                                 <select class="custom-select" multiple id="proteinForm">
                                     <option value="beef">Beef</option>
                                     <option value="chicken">Chicken</option>
@@ -72,7 +74,8 @@
                                 </select>
                             </div>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1" style="color:#ffffff">Select an Allergy (optional)</label>
+                                <label for="exampleFormControlSelect1" style="color:#ffffff">Select an Allergy
+                                    (optional)</label>
                                 <select class="custom-select" multiple id="allergyForm">
                                     <option value="peanut-free">Peanut Free</option>
                                     <option value="tree-nut-free">Tree Nuts Free</option>
@@ -83,25 +86,33 @@
                         </form>
                     </div>
                 </div>
-                    <div class="mt-4">
-                        <button type="button" style="background-color:#33ABB1;border-color:#33ABB1" class="btn btn-primary" id="search">Search</button>
-                    </div>
+                <div class="mt-4">
+                    <button type="button" style="background-color:#33ABB1;border-color:black" class="btn btn-primary"
+                        id="search">Search</button>
+                </div>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 col-12" style="border-color:#FE5F1B">
-                <div class="card mb-4" style="background-color:#FE5F1B">
-                    <img src="./assets/images/stockfoodimage.jpg" class="card-img-top food-image" alt="">
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12" style="border-color:black">
+                <div class="card mb-4" style="background-color:#FE5F1B; border-color:black">
+                    <img src="./assets/images/stockfoodimage.jpg" class="card-img-top food-image" alt="Food Wheel">
                     <div class="card-body">
-                        <p class="card-text recipe-name font-weight-bold"></p>   
+                        <p class="card-text recipe-name font-weight-bold"></p>
+                        <span class="card-text recipe-calories font-weight-bold"></span>
+                        <span class="card-text recipe-calorie-count"></span>
+                        <p class="card-text recipe-ingredients font-weight-bold"></p>
                         <p class="card-text recipe-text"></p>
-                        <a class="card-text recipe-link"></a>
+
+                        <a class="card-link recipe-link"></a>
                     </div>
                 </div>
-                <input class="btn btn-primary shopping-btn" style="background-color:#33ABB1;border-color:#33ABB1" type="submit" value="Save This Meal">
+                <input class="btn btn-primary shopping-btn" style="background-color:#33ABB1;border-color:black" type="submit"
+                    value="Save This Meal">
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                 <div class="mb-4">
-                    <div class="card" style="border-color:#FE5F1B">
-                        <div class="card-body" style="background-color:#FE5F1B;border-color:#FE5F1B">
+                    <div class="card" style="background-color:#FE5F1B; border-color:black">
+                        <div class="card-body">
                             <h5 class="card-title" style="font-weight:800;color:#ffffff">Tonight's Order</h5>
                             <p class="card-text" style="color:#ffffff">Your saved selections.</p>
                             <div class="form-group">
@@ -110,25 +121,26 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn" style="background-color:#33ABB1;border-color:#33ABB1" href="wine.html">Find a Drink!</a>
+                <a class="btn" style="background-color:#33ABB1;border-color:black" href="wine.html">Find a Drink!</a>
             </div>
         </div>
+    </div>
 
 
-        <!--footer-->
-        <footer class="card text-center fixed-bottom" style="background-color: #FE5F1B">
-            <div class="container">
-                <span style="color:#ffffff">© 2019 Copyright</span>
-            </div>
-        </footer>
+    <!--footer-->
+    <footer class="text-center fixed-bottom">
+        <div class="container">
+            <span style="color: darkgray">© 2019 Copyright</span>
+        </div>
+    </footer>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-            crossorigin="anonymous"></script>
-        <script type="text/javascript" src="assets/javascript/food.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/food.js"></script>
 
 </body>
 
