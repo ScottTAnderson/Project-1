@@ -86,4 +86,11 @@ $(document).ready(function() {
         }
     });
 
+    $('.shopping-btn').on('click', function(){
+        $('#selection-recipe-name').text(foodName);
+        $('#selection-recipe-link').attr('href', foodPrepSite);
+        $('#selection-recipe-link').attr('target', 'blank');
+        $('#selection-recipe-link').text(foodPrepSite);
+    });
+
 });

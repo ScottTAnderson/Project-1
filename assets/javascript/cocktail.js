@@ -70,4 +70,10 @@ $(document).ready(function () {
             $('.ingredient').text('Ingredient Choices');
         }
     });
+
+    $('.shopping-btn').on('click', function(){
+        var selectedDrink = $('.drink-name').val().trim();
+        console.log(selectedDrink);
+        $('#selection-drink-name').text(selectedDrink);
+    });
 });
