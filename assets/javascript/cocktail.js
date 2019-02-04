@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var ingredient = '';
     var alcoholIndicator = '';
+    var drinkName = '';
 
     //Get cocktail
     function getCocktail() {
@@ -20,7 +21,7 @@ $(document).ready(function () {
             }).then(function (drinkDetails) {
                 var drinkInstructions;
                 var drinkImage;
-                var drinkName;
+                drinkName;
                 $('.drink-ingredients').text('');
                 $('.drink-measurements').text('');
                 
@@ -72,8 +73,6 @@ $(document).ready(function () {
     });
 
     $('.shopping-btn').on('click', function(){
-        var selectedDrink = $('.drink-name').val().trim();
-        console.log(selectedDrink);
-        $('#selection-drink-name').text(selectedDrink);
+        $('#selection-drink-name').text(drinkName);
     });
 });
