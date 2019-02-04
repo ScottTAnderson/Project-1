@@ -1,5 +1,18 @@
+//firebase config
+var config = {
+    apiKey: "AIzaSyCzjnnF9wUUBv0wys562PrCCIt3_1QHxnk",
+    authDomain: "date-night-project1.firebaseapp.com",
+    databaseURL: "https://date-night-project1.firebaseio.com",
+    projectId: "date-night-project1",
+    storageBucket: "date-night-project1.appspot.com",
+    messagingSenderId: "902893916791"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+
 var genresArray = [];
 var decadesArray = [];
+var YourMovie = '';
 
 $(document).ready(function () {
 
@@ -10,17 +23,17 @@ $(document).ready(function () {
             var $widget = $(this)
             //Here a variable is created for the DOM checkbox object
             var $checkbox = $('<input type="checkbox" class="hidden" />');
-                //Set a color for the whole checkbox selection
+            //Set a color for the whole checkbox selection
             var color = ($widget.data('color') ? $widget.data('color') : "primary");
             var style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-");
-              var settings = {
-                    on: {
-                        icon: 'glyphicon glyphicon-check'
-                    },
-                    off: {
-                        icon: 'glyphicon glyphicon-unchecked'
-                    }
-                };
+            var settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
             $widget.css('cursor', 'pointer')
             $widget.prepend(" ");
             $widget.prepend($checkbox);
@@ -30,13 +43,11 @@ $(document).ready(function () {
 
                 //this should check if the clicked box is checked, and subsequently removed the array item by its index
                 if ($checkbox.is(':checked')) {
-                    genresArray = genresArray.filter(function(value, index, arr) {
+                    genresArray = genresArray.filter(function (value, index, arr) {
                         return value !== $widget.attr('value')
                     });
-                    console.log(genresArray);
                 } else {
                     genresArray.push($widget.attr('value'));
-                    console.log(genresArray);
                 }
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
@@ -84,32 +95,30 @@ $(document).ready(function () {
             var $widget = $(this)
             //Here a variable is created for the DOM checkbox object
             var $checkbox = $('<input type="checkbox" class="hidden" />');
-                //Set a color for the whole checkbox selection
+            //Set a color for the whole checkbox selection
             var color = ($widget.data('color') ? $widget.data('color') : "primary");
             var style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-");
-              var settings = {
-                    on: {
-                        icon: 'glyphicon glyphicon-check'
-                    },
-                    off: {
-                        icon: 'glyphicon glyphicon-unchecked'
-                    }
-                };
+            var settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
             $widget.css('cursor', 'pointer')
             $widget.prepend(" ");
             $widget.prepend($checkbox);
 
             // Event Handlers
             $widget.on('click', function () {
-                
+
                 if ($checkbox.is(':checked')) {
-                    decadesArray = decadesArray.filter(function(value, index, arr) {
+                    decadesArray = decadesArray.filter(function (value, index, arr) {
                         return value !== $widget.attr('value')
                     });
-                    console.log(decadesArray);
                 } else {
                     decadesArray.push($widget.attr('value'));
-                    console.log(decadesArray);
                 }
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                 $checkbox.triggerHandler('change');
@@ -152,7 +161,6 @@ $(document).ready(function () {
     });
 
     $("#SubmitButton").on("click", function () {
-        debugger;
         getRandomMovie();
 
     });
@@ -168,14 +176,6 @@ $(document).ready(function () {
         var startDate = decadesArraySort[0] + '-1-1';
         var endDate = decadesArraySort[decadesArray.length - 1] + '-12-31';
         var findGenres = genresArray.join('|');
-        console.log(startDate);
-        console.log(endDate);
-
-        //Now to actually use the criteria checked in order to call a movie with the right genre and decade
-        //Comment this section out to use the other variable names
-        console.log(findGenres);
-        console.log(findMovie);
-        console.log(findPage);
 
         //API Read Access Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZWFjODg0OTNiYmIyOWZmOTNiYjRiZWRmMDllN2Y0ZSIsInN1YiI6IjVjNGU3ZDliMGUwYTI2NDk1YWQ3NzJmNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.q6gP_DxVZvU1_9xztOOuJ_5pATqDkg33cWwVgSCkyyQ
         var queryURL = 'https://api.themoviedb.org/3/discover/movie?api_key=' +
@@ -185,7 +185,7 @@ $(document).ready(function () {
             '&primary_release_date.gte=' +
             startDate +
             '&primary_release_date.lte=' +
-            endDate + 
+            endDate +
             '&with_genres=' +
             findGenres; //The array needs to be updated based on genre boxes selected
         console.log(queryURL);
@@ -205,21 +205,18 @@ $(document).ready(function () {
 
             // Also go ahead and change the HTML elements accordingly
             //a single random movie json object
-            var YourMovie = response.results[findMovie];
+            YourMovie = response.results[findMovie];
 
             $("#MovieTitle").empty();
             $("#MovieTitle").html("Title: " + YourMovie.title)
 
-            console.log(response.results[findMovie].overview);
             $("#MoviePlot").empty()
             $("#MoviePlot").text("Plot: " + YourMovie.overview)
 
-            console.log(response.results[findMovie].rating);
             $("#MovieRating").empty();
             $("#MovieRating").text("Rating: " + YourMovie.rating)
 
             //Release Date in yyyy-mm-dd format
-            console.log(response.results[findMovie].release_date);
             $("#MovieYear").empty();
             $("#MovieYear").text("Release Date: " + YourMovie.release_date)
 
@@ -229,3 +226,33 @@ $(document).ready(function () {
     }
 
 })
+
+function updateList() {
+    $('#selection-recipe-name').empty();
+    $('#selection-recipe-link').empty();
+    database.ref().on('child_added', function (snapshot) {
+        var reference = snapshot.val()
+        var drinkName = snapshot.val().drinkName
+        console.log(reference);
+
+        $('#selection-recipe-name').text(reference.foodName);
+        $('#selection-recipe-link').attr('href', reference.foodPrepSite);
+        $('#selection-recipe-link').attr('target', 'blank');
+        $('#selection-recipe-link').text(reference.foodPrepSite);
+        $('#selection-drink-name').text(drinkName);
+        $('#selection-movie-name').text(reference.original_title);
+    })
+};
+
+$('.shopping-btn').on('click', function () {
+    event.preventDefault();
+    var variable = YourMovie.title
+
+    var newMovie = {
+        variable: variable,
+    }
+    database.ref().push(newMovie);
+    updateList();
+});
+
+updateList();

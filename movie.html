@@ -16,6 +16,8 @@
     <!--External CSS link-->
     <link rel="stylesheet" type="text/css" href="assets/CSS/MovieStyle.css">
     <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
 
 
     <!-- Extras to make the checklist work -->
@@ -124,25 +126,31 @@
                         <p id="MoviePlot" class="card-text"></p>
                     </div>
                 </div>
+                <input class="test btn btn-primary shopping-btn" style="background-color:#EFAB1F;border-color:black" type="submit"
+                value="This movie looks great!">;
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-                <div class="card mb-4" style="background-color:#103754">
+                <div class="card mb-4" style="background-color:#103754; border-color: black">
                     <div class="card-body">
-                        <h5 class="card-title" style="color:#ffffff">Items Selected</h5>
-                        <p class="card-text" style="color:#ffffff">Example text for saved food, drink, and movie
-                            selections.</p>
+                        <h5 class="card-title" style="font-weight:800;color:#ffffff">Tonight's Order</h5>
+                        <p class="card-text" style="color:#ffffff">Your saved selections.</p>
+                        <div id="user-selection" style="background-color:#ffffff">
+                            <p class="card-text font-weight-bold" style="color:black" id="selection-recipe-name"></p>
+                            <a class="card-text" id="selection-recipe-link"></a>
+                            <p class="card-text font-weight-bold" style="color:black" id="selection-drink-name"></p>
+                            <p class="card-text font-weight-bold" style="color:black" id="selection-movie-name"></p>
+                        </div>
                     </div>
-                </div>
-                <a class="btn" style="background-color:#EFAB1F; border-color:black" href="movie.html">This movie looks great!</a>
-            </div>
-        </div>
 
-        <!--footer-->
-        <footer class="text-center fixed-bottom">
-            <div class="container">
-                <span style="color:darkgray">© 2019 Copyright</span>
+                </div>
             </div>
-        </footer>
+
+            <!--footer-->
+            <footer class="text-center fixed-bottom">
+                <div class="container">
+                    <span style="color:darkgray">© 2019 Copyright</span>
+                </div>
+            </footer>
 
 
 
