@@ -48,3 +48,7 @@
 .btn:hover {
     color:rgb(255, 197, 197)
 }
+
+body {
+    margin-bottom: 50px;
+}
