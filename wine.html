@@ -11,6 +11,8 @@
         crossorigin="anonymous">
     <!--External CSS link-->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
 </head>
 
 <body style="background-color:#EFAB1F">
@@ -46,10 +48,12 @@
                 <div class="card" style="background-color:#33ABB1; border-color: black">
                     <div class="card-body">
                         <h5 class="card-title" style="color:#ffffff">Let's find you a drink!</h5>
-                        <p class="card-text" style="color:#ffffff">Use the form below to generate drink ideas for your date night!</p>
+                        <p class="card-text" style="color:#ffffff">Use the form below to generate drink ideas for your
+                            date night!</p>
                         <form>
                             <div class="form-group font-weight-bold">
-                                <label for="exampleFormControlSelect1" style="color:#ffffff" class="ingredient">Ingredient Choices</label>
+                                <label for="exampleFormControlSelect1" style="color:#ffffff" class="ingredient">Ingredient
+                                    Choices</label>
                                 <select class="custom-select" multiple id="ingredientForm">
                                     <option value="Non_Alcoholic">Non-Alcoholic</option>
                                     <option value="Rum">Rum</option>
@@ -65,7 +69,8 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <button type="button" style="background-color:#103754;border-color:#103754" class="btn btn-primary" id="search">Search</button>
+                    <button type="button" style="background-color:#103754;border-color:#103754" class="btn btn-primary"
+                        id="search">Search</button>
                 </div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-12 col-12 mb-4">
@@ -78,13 +83,22 @@
                         <p class="card-text drink-text"></p>
                     </div>
                 </div>
-                <input class="btn btn-primary shopping-btn" style="background-color:#103754;border-color:#103754" type="submit" value="Save This Drink">
+                <input class="btn btn-primary shopping-btn" style="background-color:#103754;border-color:#103754" type="submit"
+                    value="Save This Drink">
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                 <div class="card mb-4" style="background-color:#33ABB1; border-color: black">
                     <div class="card-body">
-                        <h5 class="card-title" style="color:#ffffff">Items Selected</h5>
-                        <p class="card-text" style="color:#ffffff">Example text for saved food, drink, and movie selections.</p>
+                        <h5 class="card-title" style="font-weight:800;color:#ffffff">Tonight's Order</h5>
+                        <p class="card-text" style="color:#ffffff">Your saved selections.</p>
+                        <div id="user-selection" style="background-color:#ffffff">
+                            <p class="card-text font-weight-bold" style="color:black" id="selection-recipe-name"></p>
+                            <a class="card-text" id="selection-recipe-link"></a>
+                            <p class="card-text font-weight-bold" style="color:black" id="selection-drink-name"></p>
+                            <a class="card-text" style="color:black" id="selection-drink-link"></p>
+                            <p class="card-text font-weight-bold" style="color:black" id="selection-movie-name"></p>
+                            <a class="card-text" style="color:black" id="selection-movie-link"></p>
+                        </div>
                     </div>
                 </div>
                 <a class="btn" style="background-color:#103754;border-color:#103754" href="movie.html">Find a Movie!</a>

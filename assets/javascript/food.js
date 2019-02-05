@@ -1,30 +1,40 @@
-$(document).ready(function() {
+//firebase config
+var config = {
+    apiKey: "AIzaSyCzjnnF9wUUBv0wys562PrCCIt3_1QHxnk",
+    authDomain: "date-night-project1.firebaseapp.com",
+    databaseURL: "https://date-night-project1.firebaseio.com",
+    projectId: "date-night-project1",
+    storageBucket: "date-night-project1.appspot.com",
+    messagingSenderId: "902893916791"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
 
-    var foodName;
-    var foodImage;
-    var foodCalories;
-    var foodIngredients = [];
-    var foodPrepSite;
-    var queryURL;
-    var protein = '';
-    var diet = '';
-    var allergy = '';
+var foodName;
+var foodImage;
+var foodCalories;
+var foodIngredients = [];
+var foodPrepSite;
+var queryURL;
+var protein = '';
+var diet = '';
+var allergy = '';
 
-    function getRecipe() {
-        var randomRecipe = Math.floor(Math.random() * 100 + 1);
-        var appID = 'c7db65d2';
-        var appKey = 'eabbd467ce4d304a551a72e85f1f0ef1';
-        
-        //var recipeID = $('.userProtein').val(); //use the input value for protein in HTML
-        queryURL = 'https://api.edamam.com/search?q=' +
-            protein +
-            '&app_id=' +
-            appID +
-            '&app_key=' +
-            appKey +
-            '&from=0&to=100' +
-            diet +
-            allergy;
+function getRecipe() {
+    var randomRecipe = Math.floor(Math.random() * 100 + 1);
+    var appID = 'c7db65d2';
+    var appKey = 'eabbd467ce4d304a551a72e85f1f0ef1';
+
+    //var recipeID = $('.userProtein').val(); //use the input value for protein in HTML
+    queryURL = 'https://api.edamam.com/search?q=' +
+        protein +
+        '&app_id=' +
+        appID +
+        '&app_key=' +
+        appKey +
+        '&from=0&to=100' +
+        diet +
+        allergy;
 
     $.ajax({
         url: queryURL,
@@ -57,33 +67,72 @@ $(document).ready(function() {
         $('.recipe-link').attr('target', 'blank');
         $('.recipe-link').text(foodPrepSite);
     })
+};
+
+function updateList() {
+    $('#selection-recipe-name').empty();
+    $('#selection-recipe-link').empty();
+    $('#selection-drink-name').empty();
+    $('#selection-drink-link').empty();
+    $('#selection-movie-name').empty();
+    $('#selection-movie-link').empty();
+    database.ref().on('child_added', function (snapshot) {
+        var foodName = snapshot.val().foodName;
+        var foodPrepSite = snapshot.val().foodPrepSite;
+        $('#selection-recipe-name').text(foodName);
+        $('#selection-recipe-link').attr('href', foodPrepSite);
+        $('#selection-recipe-link').attr('target', 'blank');
+        $('#selection-recipe-link').text(foodPrepSite);
+        $('#selection-drink-name').text(drinkName);
+        $('#selection-drink-link').attr('href', foodPrepSite);
+        $('#selection-drink-link').attr('target', 'blank');
+        $('#selection-drink-link').text(foodPrepSite);
+        $('#selection-movie-name').text(movieName);
+        $('#selection-movie-link').attr('href', foodPrepSite);
+        $('#selection-movie-link').attr('target', 'blank');
+        $('#selection-movie-link').text(foodPrepSite);
+    })
+};
+
+$('#proteinForm').on('click', function () {
+    protein = $('#proteinForm option:selected').val().trim();
+    console.log(protein);
+});
+
+$('#dietForm').on('click', function () {
+    diet = '&diet=' + $('#dietForm option:selected').val().trim();
+    console.log(diet);
+});
+
+$('#allergyForm').on('click', function () {
+    var allergyConcat = '&health=' + $('#allergyForm option:selected').val().trim();
+    allergy += allergyConcat;
+    console.log(allergy);
+});
+
+$('#search').on('click', function () {
+    if (protein === '') {
+        $('.protein').css('color', 'yellow');
+        $('.protein').append(' (Required) ');
+    } else {
+        getRecipe();
+        $('.protein').css('color', 'white');
+        $('.protein').text('Select a Protein');
+    }
+});
+
+$('.shopping-btn').on('click', function (event) {
+    event.preventDefault();
+
+    var newFood = {
+        foodName: foodName,
+        foodPrepSite: foodPrepSite,
     };
 
-    $('#proteinForm').on('click', function(){
-        protein = $('#proteinForm option:selected').val().trim();
-        console.log(protein);
-    });
+    database.ref().push(newFood);
 
-    $('#dietForm').on('click', function(){
-        diet = '&diet=' + $('#dietForm option:selected').val().trim();
-        console.log(diet);
-    });
-
-    $('#allergyForm').on('click', function(){
-        var allergyConcat = '&health=' + $('#allergyForm option:selected').val().trim();
-        allergy += allergyConcat;
-        console.log(allergy);
-    });
-
-    $('#search').on('click', function() {
-        if (protein === '') {
-            $('.protein').css('color', 'yellow');
-            $('.protein').append(' (Required) ');
-        } else {
-            getRecipe();
-            $('.protein').css('color', 'white');
-            $('.protein').text('Select a Protein');
-        }
-    });
+    updateList();
 
 });
+
+updateList();
