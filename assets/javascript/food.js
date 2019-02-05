@@ -7,7 +7,9 @@ var config = {
     storageBucket: "date-night-project1.appspot.com",
     messagingSenderId: "902893916791"
 };
-firebase.initializeApp(config);
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
 var database = firebase.database();
 
 var foodName;
@@ -71,7 +73,7 @@ function getRecipe() {
 
 function updateList() {
     $('#selection-recipe-name').empty();
-    $('#selection-recipe-link').empty();    
+    $('#selection-recipe-link').empty();
     $('#selection-drink-name').empty();
     $('#selection-drink-link').empty();
     $('#selection-movie-name').empty();
@@ -85,12 +87,12 @@ function updateList() {
         var drinkImage = snapshot.val().drinkImage;
         var movieName = snapshot.val().movieName;
         var moviePoster = snapshot.val().moviePoster
-        
+
         $('#selection-recipe-link').attr('href', foodPrepSite);
         $('#selection-recipe-link').attr('target', 'blank');
         $('#selection-recipe-link').text(foodName);
         $('#selection-recipe-image').attr('src', foodImage);
-        
+
         $('#selection-drink-link').attr('href', "https://www.thecocktaildb.com/drink.php?c=" + drinkID);
         $('#selection-drink-link').attr('target', 'blank');
         $('#selection-drink-link').text(drinkName);
@@ -143,6 +145,23 @@ $('.shopping-btn').on('click', function (event) {
 
     updateList();
 
+});
+
+$('.navbar-brand').on('click', function () {
+    $('.modal').fadeIn();
+});
+
+$('.close').on('click', function () {
+    $('.modal').fadeOut();
+});
+
+$('.submit-button').on('click', function () {
+    window.document.location.href = "index.html";
+    database.ref().remove();
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
+    $('.modal').fadeOut();
 });
 
 updateList();

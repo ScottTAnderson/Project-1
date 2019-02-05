@@ -7,7 +7,9 @@ var config = {
     storageBucket: "date-night-project1.appspot.com",
     messagingSenderId: "902893916791"
 };
-firebase.initializeApp(config);
+if (!firebase.apps.length){
+    firebase.initializeApp(config);
+    }
 var database = firebase.database();
 
 
@@ -134,5 +136,23 @@ $('.shopping-btn').on('click', function () {
 
     updateList();
 });
+
+$('.navbar-brand').on('click', function(){
+    $('.modal').fadeIn();
+});
+
+$('.close').on('click', function() {
+    $('.modal').fadeOut();
+});
+
+$('.submit-button').on('click', function () {
+    window.document.location.href = "index.html";
+    database.ref().remove();
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
+    $('.modal').fadeOut();
+});
+
 
 updateList();
