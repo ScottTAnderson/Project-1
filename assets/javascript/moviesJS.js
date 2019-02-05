@@ -253,15 +253,15 @@ function updateList() {
 };
 
 $('.shopping-btn').on('click', function () {
-    // event.preventDefault();
-    // var variable = YourMovie.title
-    console.log("hi");
+    event.preventDefault();
+    var variable = YourMovie.title
+    console.log()
 
-    // var newMovie = {
-    //     variable: variable,
-    // }
-    // database.ref().push(newMovie);
-    // updateList();
+    var newMovie = {
+        variable: variable,
+    }
+    database.ref().push(newMovie);
+    updateList();
 });
 
 updateList();
