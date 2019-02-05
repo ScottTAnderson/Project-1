@@ -58,9 +58,9 @@
     font-size: 100px; 
 }
 
-.recipe-text, .recipe-name, .card-text {
+/* .recipe-text, .recipe-name, .card-text {
     color: white;
-}
+} */
 
 #user-selection {
     padding: 5px;
