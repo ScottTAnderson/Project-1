@@ -15,11 +15,11 @@ var granimInstance = new Granim({
 });
 
 $('.navbar-brand').on('click', function(){
-    $('.modal').css('display', 'block');
+    $('.modal').fadeIn();
 });
 
 $('.close').on('click', function() {
-    $('.modal').css('display', 'none');
+    $('.modal').fadeOut();
 })
 
 // // Get the modal
