@@ -98,7 +98,9 @@ function updateList() {
         $('#selection-movie-link').attr('href', "https://www.justwatch.com/us/search?q=" + movieName);
         $('#selection-movie-link').attr('target', 'blank');
         $('#selection-movie-link').text(movieName);
-        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster);
+        if(moviePoster != undefined) {
+            $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster);
+            };
     })
 };
 
