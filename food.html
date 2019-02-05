@@ -11,6 +11,8 @@
         crossorigin="anonymous">
     <!--External CSS link-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
 </head>
 
 <body style="background-color:#103754">
@@ -95,13 +97,12 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-12" style="border-color:black">
                 <div class="card mb-4" style="background-color:#FE5F1B; border-color:black">
                     <img src="./assets/images/stockfoodimage.jpg" class="card-img-top food-image" alt="Food Wheel">
-                    <div class="card-body">
+                    <div class="card-body" style="color:#ffffff">
                         <p class="card-text recipe-name font-weight-bold"></p>
                         <span class="card-text recipe-calories font-weight-bold"></span>
                         <span class="card-text recipe-calorie-count"></span>
                         <p class="card-text recipe-ingredients font-weight-bold"></p>
                         <p class="card-text recipe-text"></p>
-
                         <a class="card-link recipe-link"></a>
                     </div>
                 </div>
@@ -115,8 +116,13 @@
                         <div class="card-body">
                             <h5 class="card-title" style="font-weight:800;color:#ffffff">Tonight's Order</h5>
                             <p class="card-text" style="color:#ffffff">Your saved selections.</p>
-                            <div class="form-group">
-                                <textarea class="form-control" id="shoppingList" rows="10"></textarea>
+                            <div id="user-selection" style="background-color:#ffffff">
+                                <p class="card-text font-weight-bold" style="color:black" id="selection-recipe-name"></p>
+                                <a class="card-text" id="selection-recipe-link"></a>
+                                <p class="card-text font-weight-bold" style="color:black" id="selection-drink-name"></p>
+                                <a class="card-text" style="color:black" id="selection-drink-link"></p>
+                                <p class="card-text font-weight-bold" style="color:black" id="selection-movie-name"></p>
+                                <a class="card-text" style="color:black" id="selection-movie-link"></p>
                             </div>
                         </div>
                     </div>
