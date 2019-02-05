@@ -2,6 +2,27 @@
     padding: -150px;
 }
 
+#canvas-basic {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 240px;
+    z-index: -5;
+    margin-top: 56px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#index-body, #food-body, #cocktail-body, #movie-body {
+    margin-top: 112px;
+}
+
+#index-title, #food-title, #cocktail-title, #movie-title {
+    margin-top: 55px;
+}
+
 .title {
     letter-spacing: .05em;
     text-shadow: 
