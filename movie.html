@@ -9,32 +9,17 @@
     <!--Bootstrap CSS Link-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
-    <!-- JQuery Link -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
     <!--External CSS link-->
     <link rel="stylesheet" type="text/css" href="assets/CSS/MovieStyle.css">
     <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
-
-
-    <!-- Extras to make the checklist work -->
-    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-
 </head>
 
-<body style="background-color: #D53D13">
-    <!-- Add in the AJAX code -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- don't need this... just going to take the relevant API call and put in into the movies HTML page -->
-    <!-- <script src="assets/javascript/api.js"></script> -->
+<body style="background-color: #3D013C">
+   
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg" style="background-color: #103754">
+    <nav class="navbar navbar-expand-lg" style="background-color: #3D013C">
         <a class="navbar-brand" style="color:#EFAB1F" href="#">Login</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,15 +36,16 @@
     </nav>
 
     <!--Jumbotron-->
-    <div class="jumbotron jumbotron-fluid text-center" style="background-color: #103754">
-        <div class="container">
+    <div class="canvas-wrapper">
+        <canvas id="canvas-basic"></canvas>
+        <div class="container text-center" id="movie-title">
             <h1 class="display-4" style="font-weight:800;color:#ffffff">Movie Magic</h1>
             <h4 style="color:#ffffff">Find a flick to complete the night!<h4>
         </div>
     </div>
 
     <!-- Container for the remianing items Genres, Years, and then movie info -->
-    <div class="container">
+    <div class="container" id="movie-body">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-12 mb-4">
                 <div class="card" style="background-color: #103754; border-color:black">
@@ -112,9 +98,6 @@
                 <div class="card mb-4" style="background-color: #103754; border-color:black">
                     <div class="card-body">
                         <h5 class="card-title" id="MovieLabel" style="color:#ffffff">Your Movie Option!</h5>
-                        <!-- <h5 class="card-title" id="MovieCard">Your Movie Choice!</h5> -->
-                        <!-- CSS style this to arrange the Title, Year, and Runtime adjacent to the poster image -->
-
                         <img src="./assets/images/movie_poster_collage.jpg" id="MoviePoster" style="width:100%;height:auto"
                             alt="Poster Collage">
                         <p id="MovieTitle" class="card-text"></p>
@@ -126,6 +109,7 @@
                 <input class="test btn btn-primary shopping-btn" style="background-color:#EFAB1F;border-color:black" type="submit"
                 value="This movie looks great!">
             </div>
+
             <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                 <div class="card mb-4" style="background-color:#103754; border-color: black">
                     <div class="card-body">
@@ -140,24 +124,24 @@
                             <a class="card-text" style="color:black" id="selection-movie-link"></p>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!--footer-->
-            <footer class="text-center fixed-bottom">
-                <div class="container">
-                    <span style="color:darkgray">© 2019 Copyright</span>
-                </div>
-            </footer>
+    <!--footer-->
+    <footer class="text-center fixed-bottom">
+        <div class="container">
+            <span style="color:darkgray">© 2019 Copyright</span>
+        </div>
+    </footer>
 
-            <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-            crossorigin="anonymous"></script>
-                <!-- JS Files -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/index.js"></script>    
     <script src="assets/javascript/moviesJS.js"></script>
 
 </body>

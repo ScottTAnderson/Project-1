@@ -15,10 +15,10 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
 </head>
 
-<body style="background-color:#EFAB1F">
+<body style="background-color:#3D013C">
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg" style="background-color:#33ABB1">
-        <a class="navbar-brand" style="color: #103754" href="#">Login</a>
+    <nav class="navbar navbar-expand-lg" style="background-color:#3D013C">
+        <a class="navbar-brand" style="color: #EFAB1F" href="#">Login</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,18 +34,19 @@
     </nav>
 
     <!--Jumbotron-->
-    <div class="jumbotron jumbotron-fluid text-center" style="background-color:#33ABB1">
-        <div class="container">
+    <div class="canvas-wrapper">
+        <canvas id="canvas-basic"></canvas>
+        <div class="container text-center" id="cocktail-title">
             <h1 class="display-4" style="font-weight:800;color:#ffffff">Bottoms Up</h1>
             <h4 style="color:#ffffff">Now add a drink to your meal!<h4>
         </div>
     </div>
 
     <!--Main Card-->
-    <div class="container">
+    <div class="container" id="cocktail-body">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-12 mb-4">
-                <div class="card" style="background-color:#33ABB1; border-color: black">
+                <div class="card" style="background-color:#103754; border-color: black">
                     <div class="card-body">
                         <h5 class="card-title" style="color:#ffffff">Let's find you a drink!</h5>
                         <p class="card-text" style="color:#ffffff">Use the form below to generate drink ideas for your
@@ -69,12 +70,12 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <button type="button" style="background-color:#103754;border-color:#103754" class="btn btn-primary"
+                    <button type="button" style="background-color:#EFAB1F;border-color:black" class="btn btn-primary"
                         id="search">Search</button>
                 </div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-12 col-12 mb-4">
-                <div class="card mb-4" style="background-color:#33ABB1; border-color:black">
+                <div class="card mb-4" style="background-color:#103754; border-color:black">
                     <img src="./assets/images/stockdrinkimage.jpg" class="card-img-top drink-image" alt="Drink Image">
                     <div class="card-body">
                         <p class="card-text drink-name font-weight-bold"></p>
@@ -83,11 +84,11 @@
                         <p class="card-text drink-text"></p>
                     </div>
                 </div>
-                <input class="btn btn-primary shopping-btn" style="background-color:#103754;border-color:#103754" type="submit"
+                <input class="btn btn-primary shopping-btn" style="background-color:#EFAB1F;border-color:black" type="submit"
                     value="Save This Drink">
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-                <div class="card mb-4" style="background-color:#33ABB1; border-color: black">
+                <div class="card mb-4" style="background-color:#103754; border-color: black">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight:800;color:#ffffff">Tonight's Order</h5>
                         <p class="card-text" style="color:#ffffff">Your saved selections.</p>
@@ -101,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn" style="background-color:#103754;border-color:#103754" href="movie.html">Find a Movie!</a>
+                <a class="btn" style="background-color:#EFAB1F;border-color:black" href="movie.html">Find a Movie!</a>
             </div>
         </div>
     </div>
@@ -119,8 +120,9 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/index.js"></script>
     <script type="text/javascript" src="assets/javascript/cocktail.js"></script>
-
 
 </body>
 
