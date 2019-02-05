@@ -16,7 +16,29 @@
 <body style="background-color: #3D013C">
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg" style="background-color: #3D013C">
-        <a class="navbar-brand" style="color:#EFAB1F" href="#">Login</a>
+        <a id="button" class="navbar-brand" style="color:#EFAB1F" href="#">Login</a>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Login</p>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -65,7 +87,8 @@
                             <img class="d-block w-100" src="assets/images/dinner.jpg" alt="First slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h4 class="carousel-headings">Dinner</h4>
-                                <p class="carousel-text">Pick out your desired requirements and meal option will be provided!</p>
+                                <p class="carousel-text">Pick out your desired requirements and meal option will be
+                                    provided!</p>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -79,7 +102,8 @@
                             <img class="d-block w-100" src="assets/images/pexels-photo-375885.jpeg" alt="Third slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h4 class="carousel-headings">Movie</h4>
-                                <p class="carousel-text">Pick a genre, choose a decade, and a fitting movie will be suggested!</p>
+                                <p class="carousel-text">Pick a genre, choose a decade, and a fitting movie will be
+                                    suggested!</p>
                             </div>
                         </div>
                     </div>
@@ -115,7 +139,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/index.js"></script> 
+    <script type="text/javascript" src="assets/javascript/index.js"></script>
 
 </body>
 
