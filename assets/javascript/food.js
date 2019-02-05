@@ -79,18 +79,19 @@ function updateList() {
     database.ref().on('child_added', function (snapshot) {
         var foodName = snapshot.val().foodName;
         var foodPrepSite = snapshot.val().foodPrepSite;
-        $('#selection-recipe-name').text(foodName);
+        var drinkName = snapshot.val().drinkName;
+        var drinkID = snapshot.val().drinkID;
+        var movieName = snapshot.val().movieName;
+        var moviePoster = snapshot.val().moviePoster
         $('#selection-recipe-link').attr('href', foodPrepSite);
         $('#selection-recipe-link').attr('target', 'blank');
-        $('#selection-recipe-link').text(foodPrepSite);
-        $('#selection-drink-name').text(drinkName);
-        $('#selection-drink-link').attr('href', foodPrepSite);
+        $('#selection-recipe-link').text(foodName);
+        $('#selection-drink-link').attr('href', "https://www.thecocktaildb.com/drink.php?c=" + drinkID);
         $('#selection-drink-link').attr('target', 'blank');
-        $('#selection-drink-link').text(foodPrepSite);
-        $('#selection-movie-name').text(movieName);
+        $('#selection-drink-link').text(drinkName);
         $('#selection-movie-link').attr('href', foodPrepSite);
         $('#selection-movie-link').attr('target', 'blank');
-        $('#selection-movie-link').text(foodPrepSite);
+        $('#selection-movie-link').text(movieName);
     })
 };
 
