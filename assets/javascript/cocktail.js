@@ -66,16 +66,25 @@ function getCocktail() {
 function updateList() {
     $('#selection-recipe-name').empty();
     $('#selection-recipe-link').empty();
+    $('#selection-drink-name').empty();
+    $('#selection-drink-link').empty();
+    $('#selection-movie-name').empty();
+    $('#selection-movie-link').empty();
     database.ref().on('child_added', function (snapshot) {
-        var reference = snapshot.val()
-        var drinkName = snapshot.val().drinkName
-        console.log(reference);
-
-        $('#selection-recipe-name').text(reference.foodName);
-        $('#selection-recipe-link').attr('href', reference.foodPrepSite);
+        var foodName = snapshot.val().foodName;
+        var foodPrepSite = snapshot.val().foodPrepSite;
+        $('#selection-recipe-name').text(foodName);
+        $('#selection-recipe-link').attr('href', foodPrepSite);
         $('#selection-recipe-link').attr('target', 'blank');
-        $('#selection-recipe-link').text(reference.foodPrepSite);
+        $('#selection-recipe-link').text(foodPrepSite);
         $('#selection-drink-name').text(drinkName);
+        $('#selection-drink-link').attr('href', foodPrepSite);
+        $('#selection-drink-link').attr('target', 'blank');
+        $('#selection-drink-link').text(foodPrepSite);
+        $('#selection-movie-name').text(movieName);
+        $('#selection-movie-link').attr('href', foodPrepSite);
+        $('#selection-movie-link').attr('target', 'blank');
+        $('#selection-movie-link').text(foodPrepSite);
     })
 };
 
