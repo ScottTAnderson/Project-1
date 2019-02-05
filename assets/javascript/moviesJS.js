@@ -13,6 +13,7 @@ var database = firebase.database();
 var genresArray = [];
 var decadesArray = [];
 var YourMovie = '';
+var moviePoster = '';
 
 $(document).ready(function () {
 
@@ -206,6 +207,7 @@ $(document).ready(function () {
             // Also go ahead and change the HTML elements accordingly
             //a single random movie json object
             YourMovie = response.results[findMovie];
+            moviePoster = response.results[findMovie].poster_path;
 
             $("#MovieTitle").empty();
             $("#MovieTitle").html("Title: " + YourMovie.title)
@@ -221,7 +223,7 @@ $(document).ready(function () {
             $("#MovieYear").text("Release Date: " + YourMovie.release_date)
 
             $("#MoviePoster").empty();
-            $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + response.results[findMovie].poster_path)
+            $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + moviePoster);
         })
     }
 
@@ -229,7 +231,7 @@ $(document).ready(function () {
 
 function updateList() {
     $('#selection-recipe-name').empty();
-    $('#selection-recipe-link').empty();
+    $('#selection-recipe-link').empty();    
     $('#selection-drink-name').empty();
     $('#selection-drink-link').empty();
     $('#selection-movie-name').empty();
@@ -237,28 +239,36 @@ function updateList() {
     database.ref().on('child_added', function (snapshot) {
         var foodName = snapshot.val().foodName;
         var foodPrepSite = snapshot.val().foodPrepSite;
+        var foodImage = snapshot.val().foodImage;
         var drinkName = snapshot.val().drinkName;
         var drinkID = snapshot.val().drinkID;
+        var drinkImage = snapshot.val().drinkImage;
         var movieName = snapshot.val().movieName;
         var moviePoster = snapshot.val().moviePoster
+        
         $('#selection-recipe-link').attr('href', foodPrepSite);
         $('#selection-recipe-link').attr('target', 'blank');
         $('#selection-recipe-link').text(foodName);
+        $('#selection-recipe-image').attr('src', foodImage);
+        
         $('#selection-drink-link').attr('href', "https://www.thecocktaildb.com/drink.php?c=" + drinkID);
         $('#selection-drink-link').attr('target', 'blank');
         $('#selection-drink-link').text(drinkName);
-        $('#selection-movie-link').attr('href', foodPrepSite);
+        $('#selection-drink-image').attr('src', drinkImage);
+
+        $('#selection-movie-link').attr('href', "https://www.justwatch.com/us/search?q=" + movieName);
         $('#selection-movie-link').attr('target', 'blank');
         $('#selection-movie-link').text(movieName);
+        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster);
     })
 };
 
 $('.shopping-btn').on('click', function () {
     event.preventDefault();
-    
+    console.log(YourMovie.backdrop_path);
     var newMovie = {
         movieName: YourMovie.original_title,
-        moviePoster: YourMovie.backdrop_path,
+        moviePoster: moviePoster,
     }
     database.ref().push(newMovie);
     updateList();
