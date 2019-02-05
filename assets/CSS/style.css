@@ -9,11 +9,22 @@
         7px 7px 0px rgba(0, 0, 0, 0.4);
 }
 
+.carousel-inner > .item > img {
+    margin: 0 auto;
+    height: 400px;
+    width: 600px;
+}
+
+.carousel{
+    margin-bottom:20px;
+}
+
 .btn {
     background-color: #17252a;
     border-color: #17252a;
     color: #feffff;
     font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .nav-item {
@@ -33,6 +44,17 @@
 
 .card {
     height: 750px;
+}
+
+#index-card {
+    height: 150px;
+}
+
+.carousel-text{
+    font-size: 20px; 
+}
+.carousel-headings{
+    font-size: 100px; 
 }
 
 .recipe-text, .recipe-name, .card-text {
