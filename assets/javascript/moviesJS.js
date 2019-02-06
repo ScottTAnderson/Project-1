@@ -247,19 +247,19 @@ function updateList() {
 
         $('#selection-recipe-link').attr('href', foodPrepSite);
         $('#selection-recipe-link').attr('target', 'blank');
-        $('#selection-recipe-link').text(foodName);
-        $('#selection-recipe-image').attr('src', foodImage);
+        $('#selection-recipe-link').text(foodName).css('color', 'white');
+        $('#selection-recipe-image').attr('src', foodImage).css('margin', '20px 0px 15px 0px');
 
         $('#selection-drink-link').attr('href', "https://www.thecocktaildb.com/drink.php?c=" + drinkID);
         $('#selection-drink-link').attr('target', 'blank');
-        $('#selection-drink-link').text(drinkName);
-        $('#selection-drink-image').attr('src', drinkImage);
+        $('#selection-drink-link').text(drinkName).css('color', 'white');
+        $('#selection-drink-image').attr('src', drinkImage).css('margin', '20px 0px 15px 0px');
 
         $('#selection-movie-link').attr('href', "https://www.justwatch.com/us/search?q=" + movieName);
         $('#selection-movie-link').attr('target', 'blank');
-        $('#selection-movie-link').text(movieName);
+        $('#selection-movie-link').text(movieName).css('color', 'white');;
         if(moviePoster != undefined) {
-        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster);
+        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster).css('margin', '20px 0px 15px 0px');
         };
     })
 };
