@@ -1,19 +1,3 @@
-var granimInstance = new Granim({
-    element: '#canvas-basic',
-    direction: 'radial',
-    isPausedWhenNotInView: true,
-    states : {
-        "default-state": {
-            gradients: [
-                ['#ff9966', '#ff5e62'],
-                ['#00F260', '#0575E6'],
-                ['#e1eec3', '#f05053']
-            ],
-            transitionSpeed: 1000
-        }
-    }
-});
-
 //firebase config
 var config = {
     apiKey: "AIzaSyCzjnnF9wUUBv0wys562PrCCIt3_1QHxnk",
@@ -23,24 +7,40 @@ var config = {
     storageBucket: "date-night-project1.appspot.com",
     messagingSenderId: "902893916791"
 };
-if (!firebase.apps.length){
+if (!firebase.apps.length) {
     firebase.initializeApp(config);
-    }
+};
 var database = firebase.database();
-
-$('.navbar-brand').on('click', function(){
+//animated header using Granim
+var granimInstance = new Granim({
+    element: '#canvas-basic',
+    direction: 'radial',
+    isPausedWhenNotInView: true,
+    states: {
+        "default-state": {
+            gradients: [
+                ['#ff9966', '#ff5e62'],
+                ['#00F260', '#0575E6'],
+                ['#e1eec3', '#f05053'],
+            ],
+            transitionSpeed: 1000
+        }
+    }
+});
+//adds a faux login (resets the db) when clicking LOGIN
+$('.navbar-brand').on('click', function () {
     $('.modal').fadeIn();
 });
 
-$('.close').on('click', function() {
+$('.close').on('click', function () {
     $('.modal').fadeOut();
 });
 
 $('.submit-button').on('click', function () {
-    window.document.location.href = "index.html";
     database.ref().remove();
     if (!firebase.apps.length) {
         firebase.initializeApp(config);
-    }
+    };
     $('.modal').fadeOut();
+    window.document.location.href = "index.html";
 });

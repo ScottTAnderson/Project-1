@@ -7,9 +7,9 @@ var config = {
     storageBucket: "date-night-project1.appspot.com",
     messagingSenderId: "902893916791"
 };
-if (!firebase.apps.length){
+if (!firebase.apps.length) {
     firebase.initializeApp(config);
-    }
+}
 var database = firebase.database();
 
 var genresArray = [];
@@ -161,73 +161,68 @@ $(function () {
     });
 });
 
-$("#SubmitButton").on("click", function () {
-    getRandomMovie();
-
-});
-
+//get single movie object from API
 function getRandomMovie() {
-
     //Get a movie based on your selections on the page
     var apiKey = '5eac88493bbb29ff93bb4bedf09e7f4e';
     //This findMovie variable needs to go if you want to be querying using genres and years
     var findMovie = Math.floor(Math.random() * 20 + 1);
     var findPage = Math.floor(Math.random() * 20 + 1);
     var decadesArraySort = decadesArray.sort();
-    var startDate = decadesArraySort[0] + '-1-1';
-    var endDate = decadesArraySort[decadesArray.length - 1] + '-12-31';
+    if (decadesArray) {
+        var startDate = decadesArraySort[0] + '-1-1';
+        var endDate = (parseInt(decadesArraySort[0]) + 9) + '-12-31';
+    } else {
+        var startDate = decadesArraySort[0] + '-1-1';
+        var endDate = (parseInt(decadesArraySort[decadesArray.length - 1]) + 9) + '-12-31';
+    }
     var findGenres = genresArray.join('|');
-
+    if (decadesArray.length != 0) {
+        var addDates = '&primary_release_date.gte=' +
+            startDate +
+            '&primary_release_date.lte=' +
+            endDate + ''
+    } else addDates = '';
+    console.log(addDates);
+    if (findGenres.length != 0) {
+        var addGenres = '&with_genres=' +
+            findGenres + ''
+    } else addGenres = '';
     //API Read Access Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZWFjODg0OTNiYmIyOWZmOTNiYjRiZWRmMDllN2Y0ZSIsInN1YiI6IjVjNGU3ZDliMGUwYTI2NDk1YWQ3NzJmNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.q6gP_DxVZvU1_9xztOOuJ_5pATqDkg33cWwVgSCkyyQ
     var queryURL = 'https://api.themoviedb.org/3/discover/movie?api_key=' +
         apiKey +
         '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&certification=1&certification_country=US&page=' +
         findPage +
-        '&primary_release_date.gte=' +
-        startDate +
-        '&primary_release_date.lte=' +
-        endDate +
-        '&with_genres=' +
-        findGenres; //The array needs to be updated based on genre boxes selected
-    console.log(queryURL);
-
-
+        addDates +
+        addGenres +
+        '&with_original_language=en'; //The array needs to be updated based on genre boxes selected
     $.ajax({
-        // async: true,
-        // crossDomain: true,
         url: queryURL,
         method: 'GET',
-        // headers: {},
-        // data: '{}'
     }).then(function (response) {
-        //a single random movie json object
-        console.log(response.results[findMovie]);
-
-
-        // Also go ahead and change the HTML elements accordingly
         //a single random movie json object
         YourMovie = response.results[findMovie];
         moviePoster = response.results[findMovie].poster_path;
 
         $("#MovieTitle").empty();
-        $("#MovieTitle").html("Title: " + YourMovie.title)
+        $("#MovieTitle").html("Title: " + YourMovie.title);
 
-        $("#MoviePlot").empty()
-        $("#MoviePlot").text("Plot: " + YourMovie.overview)
+        $("#MoviePlot").empty();
+        $("#MoviePlot").text("Plot: " + YourMovie.overview);
 
         $("#MovieRating").empty();
-        $("#MovieRating").text("Rating: " + YourMovie.rating)
+        $("#MovieRating").text("Rating: " + YourMovie.rating);
 
         //Release Date in yyyy-mm-dd format
         $("#MovieYear").empty();
-        $("#MovieYear").text("Release Date: " + YourMovie.release_date)
+        $("#MovieYear").text("Release Date: " + YourMovie.release_date);
 
         $("#MoviePoster").empty();
         $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + moviePoster);
-    })
+    });
 };
 
-
+//dynamically update the user's selection card with info from db
 function updateList() {
     $('#selection-recipe-name').empty();
     $('#selection-recipe-link').empty();
@@ -258,12 +253,13 @@ function updateList() {
         $('#selection-movie-link').attr('href', "https://www.justwatch.com/us/search?q=" + movieName);
         $('#selection-movie-link').attr('target', 'blank');
         $('#selection-movie-link').text(movieName).css('color', 'white');;
-        if(moviePoster != undefined) {
-        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster).css('margin', '20px 0px 15px 0px');
+        if (moviePoster != undefined) {
+            $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster).css('margin', '20px 0px 15px 0px');
         };
     })
 };
 
+//event handlers
 $('.shopping-btn').on('click', function () {
     event.preventDefault();
     console.log(YourMovie.backdrop_path);
@@ -275,23 +271,26 @@ $('.shopping-btn').on('click', function () {
     updateList();
 });
 
-$('.navbar-brand').on('click', function(){
+$('.navbar-brand').on('click', function () {
     $('.modal').fadeIn();
 });
 
-$('.close').on('click', function() {
+$('.close').on('click', function () {
     $('.modal').fadeOut();
 });
 
 $('.submit-button').on('click', function (event) {
     event.preventDefault();
-    window.location.href = "index.html";
     database.ref().remove();
     if (!firebase.apps.length) {
         firebase.initializeApp(config);
     }
     $('.modal').fadeOut();
+    window.location.href = "index.html";
 });
 
+$("#SubmitButton").on("click", function () {
+    getRandomMovie();
+});
 
 updateList();

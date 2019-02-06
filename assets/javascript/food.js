@@ -9,9 +9,10 @@ var config = {
 };
 if (!firebase.apps.length) {
     firebase.initializeApp(config);
-}
+};
 var database = firebase.database();
 
+//global variables
 var foodName;
 var foodImage;
 var foodCalories;
@@ -22,8 +23,9 @@ var protein = '';
 var diet = '';
 var allergy = '';
 
+//get single recipe object based on user preferences
 function getRecipe() {
-    var randomRecipe = Math.floor(Math.random() * 100 + 1);
+    var randomRecipe = Math.floor(Math.random() * 20 + 1);
     var appID = 'c7db65d2';
     var appKey = 'eabbd467ce4d304a551a72e85f1f0ef1';
 
@@ -42,15 +44,11 @@ function getRecipe() {
         url: queryURL,
         method: 'GET',
     }).then(function (answer) {
-        console.log(queryURL);
-        //a single random recipe json object
-        console.log(answer.hits[randomRecipe].recipe);
         //Name of Dish
         foodName = answer.hits[randomRecipe].recipe.label;
         $('.recipe-name').text(foodName);
         //Image path
         foodImage = answer.hits[randomRecipe].recipe.image;
-        console.log(foodImage);
         $('.food-image').attr('src', foodImage);
         //Calories. May not end up using
         foodCalories = answer.hits[randomRecipe].recipe.calories;
@@ -68,9 +66,10 @@ function getRecipe() {
         $('.recipe-link').attr('href', foodPrepSite);
         $('.recipe-link').attr('target', 'blank');
         $('.recipe-link').text(foodPrepSite);
-    })
+    });
 };
 
+//dynamically update the user's selection card with info from db
 function updateList() {
     $('#selection-recipe-name').empty();
     $('#selection-recipe-link').empty();
@@ -86,8 +85,7 @@ function updateList() {
         var drinkID = snapshot.val().drinkID;
         var drinkImage = snapshot.val().drinkImage;
         var movieName = snapshot.val().movieName;
-        var moviePoster = snapshot.val().moviePoster
-        console.log(moviePoster);
+        var moviePoster = snapshot.val().moviePoster;
 
         $('#selection-recipe-link').attr('href', foodPrepSite);
         $('#selection-recipe-link').attr('target', 'blank');
@@ -102,27 +100,26 @@ function updateList() {
         $('#selection-movie-link').attr('href', "https://www.justwatch.com/us/search?q=" + movieName);
         $('#selection-movie-link').attr('target', 'blank');
         $('#selection-movie-link').text(movieName).css('color', 'white');;
-        if(moviePoster != undefined) {
-        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster).css('margin', '20px 0px 15px 0px');
+        if (moviePoster != undefined) {
+            $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster).css('margin', '20px 0px 15px 0px');
         };
-    })
+    });
 };
+
+//click handlers
 $('#proteinForm').on('click', function () {
     protein = $('#proteinForm option:selected').val().trim();
-    console.log(protein);
 });
 
 $('#dietForm').on('click', function () {
     diet = '&diet=' + $('#dietForm option:selected').val().trim();
-    console.log(diet);
 });
 
 $('#allergyForm').on('click', function () {
-    var allergyConcat = '&health=' + $('#allergyForm option:selected').val().trim();
-    allergy += allergyConcat;
-    console.log(allergy);
+    allergy = '&health=' + $('#allergyForm option:selected').val().trim();
 });
 
+//ensures at least protien selection is clicked
 $('#search').on('click', function () {
     if (protein === '') {
         $('.protein').css('color', 'yellow');
@@ -136,17 +133,13 @@ $('#search').on('click', function () {
 
 $('.shopping-btn').on('click', function (event) {
     event.preventDefault();
-
     var newFood = {
         foodName: foodName,
         foodPrepSite: foodPrepSite,
         foodImage: foodImage,
     };
-
     database.ref().push(newFood);
-
     updateList();
-
 });
 
 $('.navbar-brand').on('click', function () {
@@ -159,12 +152,12 @@ $('.close').on('click', function () {
 
 $('.submit-button').on('click', function (event) {
     event.preventDefault();
-    window.location.href = "index.html";
     database.ref().remove();
     if (!firebase.apps.length) {
         firebase.initializeApp(config);
     }
     $('.modal').fadeOut();
+    window.location.href = "index.html";
 });
 
 updateList();
