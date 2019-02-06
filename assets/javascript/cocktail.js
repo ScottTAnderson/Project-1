@@ -50,6 +50,7 @@ function getCocktail() {
                     $('.drink-ingredients').append(isMeasurement + ' ' + isIngredient + '<br>');
                 };
             };
+            $('.last-moment').css('overflow', 'auto');
             //Display drink name
             drinkName = drinkDetails.drinks[0].strDrink;
             $('.drink-name').text(drinkName);
@@ -58,7 +59,7 @@ function getCocktail() {
             $('.drink-text').text(drinkInstructions);
             //image url for drink
             drinkImage = drinkDetails.drinks[0].strDrinkThumb;
-            $('.drink-image').attr('src', drinkImage);
+            $('.drink-image').attr('src', drinkImage).css('object-fit','none');
         });
     });
 };

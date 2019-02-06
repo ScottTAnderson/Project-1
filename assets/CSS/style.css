@@ -95,10 +95,15 @@
     padding: 5px;
 }
 
-/* .card-body {
+.last-moment {
     height: 100%;
-    overflow: auto;
-} */
+    overflow: hidden;
+}
+
+
+.card-body {
+    overflow:auto;
+}
 
 .btn:hover {
     color:rgb(255, 197, 197)

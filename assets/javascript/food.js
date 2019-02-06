@@ -58,6 +58,7 @@ function getRecipe() {
         //Ingredients. It is an array of strings
         foodIngredients = answer.hits[randomRecipe].recipe.ingredientLines;
         console.log(foodIngredients);
+        $('.last-moment').css('overflow', 'auto');
         for (i = 0; i < foodIngredients.length; i++) {
             $('.recipe-text').append(foodIngredients[i] + '<br>');
         };
