@@ -20,7 +20,7 @@
 }
 
 #index-title, #food-title, #cocktail-title, #movie-title {
-    margin-top: 55px;
+    margin-top: 120px;
 }
 
 .title {
@@ -104,3 +104,7 @@ body {
     border-color: rgb(239,171,31);
     border-width: 1.5px;
 } 
+
+.navbar-nav {
+    z-index: 99;
+}
