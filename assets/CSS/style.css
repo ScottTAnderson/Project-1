@@ -157,3 +157,8 @@ body {
     text-decoration: none;
     cursor: pointer;
   }
+
+  #ingredientForm {
+      height:200px;
+      margin-top: 20px;
+  }
