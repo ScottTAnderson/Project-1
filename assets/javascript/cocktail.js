@@ -59,7 +59,8 @@ function getCocktail() {
             $('.drink-text').text(drinkInstructions);
             //image url for drink
             drinkImage = drinkDetails.drinks[0].strDrinkThumb;
-            $('.drink-image').attr('src', drinkImage).css('object-fit','none');
+            $('.drink-image').attr('src', drinkImage).css('object-fit','fit');
+            $('.drink-image').attr('src', drinkImage).css('height','50%');
         });
     });
 };

@@ -59,6 +59,7 @@ function getRecipe() {
         foodIngredients = answer.hits[randomRecipe].recipe.ingredientLines;
         console.log(foodIngredients);
         $('.last-moment').css('overflow', 'auto');
+        $('.caard-body').css('overflow', 'auto');
         for (i = 0; i < foodIngredients.length; i++) {
             $('.recipe-text').append(foodIngredients[i] + '<br>');
         };

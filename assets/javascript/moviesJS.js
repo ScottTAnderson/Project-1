@@ -218,7 +218,7 @@ function getRandomMovie() {
         $("#MovieYear").text("Release Date: " + YourMovie.release_date);
 
         $("#MoviePoster").empty();
-        $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + moviePoster);
+        $("#MoviePoster").attr("src", 'https://image.tmdb.org/t/p/w300' + moviePoster).css('overflow','fit');
     });
 };
 
