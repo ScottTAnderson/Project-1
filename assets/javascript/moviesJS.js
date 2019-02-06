@@ -283,14 +283,14 @@ $('.close').on('click', function() {
     $('.modal').fadeOut();
 });
 
-$('.submit-button').on('click', function () {
-    debugger;
+$('.submit-button').on('click', function (event) {
+    event.preventDefault();
+    window.location.href = "index.html";
     database.ref().remove();
     if (!firebase.apps.length) {
         firebase.initializeApp(config);
     }
     $('.modal').fadeOut();
-    $(document).attr('href', 'index.html');
 });
 
 

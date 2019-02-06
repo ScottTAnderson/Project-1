@@ -146,8 +146,9 @@ $('.close').on('click', function() {
     $('.modal').fadeOut();
 });
 
-$('.submit-button').on('click', function () {
-    window.document.location.href = "index.html";
+$('.submit-button').on('click', function (event) {
+    event.preventDefault();
+    window.location.href = "index.html";
     database.ref().remove();
     if (!firebase.apps.length) {
         firebase.initializeApp(config);
