@@ -7,7 +7,9 @@ var config = {
     storageBucket: "date-night-project1.appspot.com",
     messagingSenderId: "902893916791"
 };
-firebase.initializeApp(config);
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
 var database = firebase.database();
 
 var foodName;
@@ -71,7 +73,7 @@ function getRecipe() {
 
 function updateList() {
     $('#selection-recipe-name').empty();
-    $('#selection-recipe-link').empty();    
+    $('#selection-recipe-link').empty();
     $('#selection-drink-name').empty();
     $('#selection-drink-link').empty();
     $('#selection-movie-name').empty();
@@ -85,24 +87,26 @@ function updateList() {
         var drinkImage = snapshot.val().drinkImage;
         var movieName = snapshot.val().movieName;
         var moviePoster = snapshot.val().moviePoster
-        
+        console.log(moviePoster);
+
         $('#selection-recipe-link').attr('href', foodPrepSite);
         $('#selection-recipe-link').attr('target', 'blank');
-        $('#selection-recipe-link').text(foodName);
-        $('#selection-recipe-image').attr('src', foodImage);
-        
+        $('#selection-recipe-link').text(foodName).css('color', 'white');
+        $('#selection-recipe-image').attr('src', foodImage).css('margin', '20px 0px 15px 0px');
+
         $('#selection-drink-link').attr('href', "https://www.thecocktaildb.com/drink.php?c=" + drinkID);
         $('#selection-drink-link').attr('target', 'blank');
-        $('#selection-drink-link').text(drinkName);
-        $('#selection-drink-image').attr('src', drinkImage);
+        $('#selection-drink-link').text(drinkName).css('color', 'white');
+        $('#selection-drink-image').attr('src', drinkImage).css('margin', '20px 0px 15px 0px');
 
         $('#selection-movie-link').attr('href', "https://www.justwatch.com/us/search?q=" + movieName);
         $('#selection-movie-link').attr('target', 'blank');
-        $('#selection-movie-link').text(movieName);
-        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster);
+        $('#selection-movie-link').text(movieName).css('color', 'white');;
+        if(moviePoster != undefined) {
+        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster).css('margin', '20px 0px 15px 0px');
+        };
     })
 };
-
 $('#proteinForm').on('click', function () {
     protein = $('#proteinForm option:selected').val().trim();
     console.log(protein);
@@ -143,6 +147,24 @@ $('.shopping-btn').on('click', function (event) {
 
     updateList();
 
+});
+
+$('.navbar-brand').on('click', function () {
+    $('.modal').fadeIn();
+});
+
+$('.close').on('click', function () {
+    $('.modal').fadeOut();
+});
+
+$('.submit-button').on('click', function (event) {
+    event.preventDefault();
+    window.location.href = "index.html";
+    database.ref().remove();
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
+    $('.modal').fadeOut();
 });
 
 updateList();

@@ -7,7 +7,9 @@ var config = {
     storageBucket: "date-night-project1.appspot.com",
     messagingSenderId: "902893916791"
 };
-firebase.initializeApp(config);
+if (!firebase.apps.length){
+    firebase.initializeApp(config);
+    }
 var database = firebase.database();
 
 
@@ -84,19 +86,20 @@ function updateList() {
         
         $('#selection-recipe-link').attr('href', foodPrepSite);
         $('#selection-recipe-link').attr('target', 'blank');
-        $('#selection-recipe-link').text(foodName);
-        $('#selection-recipe-image').attr('src', foodImage);
-        
+        $('#selection-recipe-link').text(foodName).css('color', 'white');
+        $('#selection-recipe-image').attr('src', foodImage).css('margin', '20px 0px 15px 0px');
+
         $('#selection-drink-link').attr('href', "https://www.thecocktaildb.com/drink.php?c=" + drinkID);
         $('#selection-drink-link').attr('target', 'blank');
-        $('#selection-drink-link').text(drinkName);
-        console.log(drinkImage);
-        $('#selection-drink-image').attr('src', drinkImage);
+        $('#selection-drink-link').text(drinkName).css('color', 'white');
+        $('#selection-drink-image').attr('src', drinkImage).css('margin', '20px 0px 15px 0px');
 
         $('#selection-movie-link').attr('href', "https://www.justwatch.com/us/search?q=" + movieName);
         $('#selection-movie-link').attr('target', 'blank');
-        $('#selection-movie-link').text(movieName);
-        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster);
+        $('#selection-movie-link').text(movieName).css('color', 'white');;
+        if(moviePoster != undefined) {
+        $('#selection-movie-image').attr('src', "https://image.tmdb.org/t/p/w300" + moviePoster).css('margin', '20px 0px 15px 0px');
+        };
     })
 };
 
@@ -134,5 +137,24 @@ $('.shopping-btn').on('click', function () {
 
     updateList();
 });
+
+$('.navbar-brand').on('click', function(){
+    $('.modal').fadeIn();
+});
+
+$('.close').on('click', function() {
+    $('.modal').fadeOut();
+});
+
+$('.submit-button').on('click', function (event) {
+    event.preventDefault();
+    window.location.href = "index.html";
+    database.ref().remove();
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
+    $('.modal').fadeOut();
+});
+
 
 updateList();

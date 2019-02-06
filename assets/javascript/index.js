@@ -13,3 +13,34 @@ var granimInstance = new Granim({
         }
     }
 });
+
+//firebase config
+var config = {
+    apiKey: "AIzaSyCzjnnF9wUUBv0wys562PrCCIt3_1QHxnk",
+    authDomain: "date-night-project1.firebaseapp.com",
+    databaseURL: "https://date-night-project1.firebaseio.com",
+    projectId: "date-night-project1",
+    storageBucket: "date-night-project1.appspot.com",
+    messagingSenderId: "902893916791"
+};
+if (!firebase.apps.length){
+    firebase.initializeApp(config);
+    }
+var database = firebase.database();
+
+$('.navbar-brand').on('click', function(){
+    $('.modal').fadeIn();
+});
+
+$('.close').on('click', function() {
+    $('.modal').fadeOut();
+});
+
+$('.submit-button').on('click', function () {
+    window.document.location.href = "index.html";
+    database.ref().remove();
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
+    $('.modal').fadeOut();
+});

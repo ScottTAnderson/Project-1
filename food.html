@@ -19,6 +19,30 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg" style="background-color:#3D013C">
         <a class="navbar-brand" href="#" style="color: #EFAB1F">Login</a>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Login</h1><br>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-button">Submit</button>
+                </form>
+            </div>
+
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,7 +69,7 @@
     <!--Main Card-->
     <div class="container" id="food-body">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-12 mb-4">
+            <div class="col-12 order-2 col-sm-12 order-sm-2 col-md-4 order-md-1 col-lg-4 order-lg-1">
                 <div class="card" style="background-color:#103754; border-color:black">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight:800;color:#ffffff">What are you eating tonight?</h5>
@@ -94,7 +118,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-12" style="border-color:black">
+            <div class="col-12 order-3 col-sm-12 order-sm-3 col-md-4 order-md-2 col-lg-4 order-lg-2" style="border-color:black">
                 <div class="card mb-4" style="background-color:#103754; border-color:black">
                     <img src="./assets/images/stockfoodimage.jpg" class="card-img-top food-image" alt="Food Wheel">
                     <div class="card-body" style="color:#ffffff">
@@ -110,13 +134,12 @@
                     value="Save This Meal">
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+            <div class="col-12 order-1 col-sm-12 order-sm-1 col-md-4 order-md-3 col-lg-4 order-lg-3">
                 <div class="mb-4">
                     <div class="card" style="background-color:#103754; border-color:black">
                         <div class="card-body">
                             <h5 class="card-title" style="font-weight:800;color:#ffffff">Tonight's Order</h5>
-                            <p class="card-text" style="color:#ffffff">Your saved selections.</p>
-                            <div id="user-selection" style="background-color:#ffffff">
+                            <div id="user-selection" style="background-color:#103754">
                                 <a class="card-text" id="selection-recipe-link"></a>
                                 <img class="card-image" id="selection-recipe-image"style='height: 100%; width: 100%; object-fit: contain'></img>
                                 <a class="card-text" style="color:black" id="selection-drink-link"></a>
@@ -131,7 +154,6 @@
             </div>
         </div>
     </div>
-
 
     <!--footer-->
     <footer class="text-center fixed-bottom">
